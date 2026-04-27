@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e9eaec;
+  --foreground: #0d2f4a;
+  --primary: #1f78a8;
+  --accent: #24b0ba;
+  --font-display: var(--font-sora);
+  --font-body: var(--font-source-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), "Segoe UI", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: #24b0ba;
+  color: #ffffff;
+}
