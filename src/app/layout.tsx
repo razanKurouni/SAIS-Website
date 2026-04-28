@@ -14,7 +14,7 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: "SAIS Dubai | School Website",
-  description: "Modern responsive Next.js frontend connected to Sanity content.",
+  description: "Responsive SAIS Dubai homepage powered by Sanity CMS.",
 };
 
 export default function RootLayout({
