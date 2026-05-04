@@ -1,16 +1,5 @@
 import type { Metadata } from "next";
-import { Sora, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-
-const sora = Sora({
-  variable: "--font-sora",
-  subsets: ["latin"],
-});
-
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "SAIS Dubai | School Website",
@@ -24,9 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sora.variable} ${sourceSans.variable} antialiased`}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

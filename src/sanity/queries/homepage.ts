@@ -37,6 +37,12 @@ export const homepageQuery = `*[_type == "homepage"][0] {
     description,
     image ${imageWithAltProjection}
   },
+  header {
+    logo ${imageWithAltProjection},
+    menuIcon ${imageWithAltProjection},
+    bookTourButton ${ctaProjection},
+    applyNowButton ${ctaProjection}
+  },
   navigation[] ${linkProjection},
   hero {
     heading,

@@ -1,54 +1,35 @@
-import { AccreditationsSection } from "@/components/sections/accreditations-section";
-import { CardGridSection } from "@/components/sections/card-grid-section";
-import { CtaBand } from "@/components/sections/cta-band";
-import { FactsSection } from "@/components/sections/facts-section";
-import { HeroSection } from "@/components/sections/hero-section";
-import { ImageTextSection } from "@/components/sections/image-text-section";
-import { SiteFooter } from "@/components/sections/site-footer";
 import { SiteHeader } from "@/components/sections/site-header";
-import { SocialSection } from "@/components/sections/social-section";
-import { TourSection } from "@/components/sections/tour-section";
 import type { HomepageData } from "@/types/sanity";
 
 type HomePageProps = {
-  data: HomepageData;
+  data?: HomepageData;
 };
 
 export function HomePage({ data }: HomePageProps) {
   return (
-    <div className="bg-[#edf3f4] text-[#10324b]">
-      <SiteHeader links={data.navigation} />
-      {data.hero && <HeroSection hero={data.hero} />}
+    <div className="preview-page">
+      <SiteHeader settings={data?.header} links={data?.navigation} />
 
-      <main className="mx-auto max-w-6xl space-y-8 px-4 py-10 md:px-8">
-        <ImageTextSection section={data.intro} id="intro" />
-        <CtaBand section={data.ctaBand} />
-        <AccreditationsSection section={data.accreditations} />
-        <ImageTextSection section={data.whySection} id="why-sais" />
-        <FactsSection section={data.facts} />
-        <CardGridSection
-          id="quick-links"
-          heading={data.quickLinks?.heading}
-          cards={data.quickLinks?.cards}
-          variant="quick"
-        />
-        <CardGridSection
-          id="learning"
-          heading={data.learningPhases?.heading}
-          cards={data.learningPhases?.cards}
-          variant="phase"
-        />
-        <TourSection section={data.tour} />
-        <CardGridSection
-          id="news"
-          heading={data.news?.heading}
-          cards={data.news?.posts}
-          variant="news"
-        />
-        <SocialSection section={data.instagram} />
+      <main id="home" className="preview-main">
+        <div className="preview-bg" />
+        <div className="preview-header-fade" />
+        <div className="preview-grid" />
+
+        <section className="preview-stage">
+          <div className="preview-copy">
+            <p className="preview-kicker">
+              UI rebuild / Navigation first pass
+            </p>
+            <h1 className="preview-title">
+              SAIS navigation system
+            </h1>
+            <p className="preview-description">
+              This is a clean local preview stage. We are rebuilding the interface piece by piece,
+              starting with a reusable animated navigation menu.
+            </p>
+          </div>
+        </section>
       </main>
-
-      <SiteFooter footer={data.footer} />
     </div>
   );
 }

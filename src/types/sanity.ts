@@ -78,8 +78,16 @@ export type SiteFooter = {
   legalLinks?: LinkField[];
 };
 
+export type HeaderSettings = {
+  logo?: SanityImage;
+  menuIcon?: SanityImage;
+  bookTourButton?: Cta;
+  applyNowButton?: Cta;
+};
+
 export type HomepageData = {
   seo?: Seo;
+  header?: HeaderSettings;
   navigation?: LinkField[];
   hero?: {
     heading: string;
