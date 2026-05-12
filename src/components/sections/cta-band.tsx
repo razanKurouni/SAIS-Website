@@ -11,7 +11,7 @@ export function CtaBand({ section }: CtaBandProps) {
   }
 
   return (
-    <section className="rounded-lg bg-[#2bb9bd] px-6 py-8 text-center text-white">
+    <section className="rounded-lg bg-[#31b2b6] px-6 py-8 text-center text-white">
       <p className="mx-auto max-w-2xl text-sm leading-7">{section.text}</p>
       {section.ctas && section.ctas.length > 0 && (
         <div className="mt-5 flex flex-wrap justify-center gap-3">

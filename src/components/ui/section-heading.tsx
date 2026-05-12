@@ -13,8 +13,8 @@ type SectionHeadingProps = {
 export function SectionHeading({
   heading,
   align = "left",
-  eyebrowClassName = "text-[#20aeb7]",
-  titleClassName = "text-[#0c5d86]",
+  eyebrowClassName = "text-[#31b2b6]",
+  titleClassName = "text-[#1e6f9b]",
   descriptionClassName = "text-[#557189]",
   className = "",
 }: SectionHeadingProps) {

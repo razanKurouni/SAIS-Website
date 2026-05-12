@@ -1,12 +1,12 @@
 # SAIS Next.js Frontend
 
-Responsive SAIS homepage built with Next.js, TypeScript, Tailwind CSS, and Sanity CMS.
+High-quality responsive Next.js frontend connected to Sanity (`homeSection`) with animated section reveals and polished visual transitions.
 
 ## Stack
 
 - Next.js 16 (App Router)
-- TypeScript
 - Tailwind CSS 4
+- Framer Motion
 - Sanity Content Lake (`@sanity/client`)
 
 ## Run locally
@@ -28,9 +28,9 @@ NEXT_PUBLIC_SANITY_PROJECT_ID=9oxycbmd
 NEXT_PUBLIC_SANITY_DATASET=production
 ```
 
-## Homepage CMS
+## Notes
 
-- The maintainable homepage model is defined in `sanity/schemas/homepage.js`.
-- Reusable object schemas live in `sanity/schemas/objects/`.
-- The frontend first looks for a structured `homepage` document.
-- If no `homepage` document exists yet, it falls back to older `homeSection` documents so the live site keeps working while content is migrated.
+- Homepage content is loaded from `homeSection` documents ordered by `order`.
+- Uploaded images are read from `images[]` and fallback placeholders from `imagePlaceholders[]`.
+- The new maintainable homepage model is defined in `sanity/schemas/homepage.js`.
+- The frontend first looks for a `homepage` document, then falls back to the older `homeSection` content so the live site keeps working while content is migrated.

@@ -1,6 +1,8 @@
+"use client";
+
 import { Facebook, Instagram, Twitter } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { CmsImage } from "@/components/ui/cms-image";
-import { SectionHeading } from "@/components/ui/section-heading";
 import type { HomepageData } from "@/types/sanity";
 
 type SocialSectionProps = {
@@ -10,37 +12,63 @@ type SocialSectionProps = {
 const icons = [Instagram, Facebook, Twitter];
 
 export function SocialSection({ section }: SocialSectionProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   if (!section) {
     return null;
   }
 
   return (
-    <section className="py-10">
-      <div className="mb-6 flex items-center justify-between gap-4">
-        <SectionHeading heading={section.heading} titleClassName="text-[#20aeb7]" />
-        <div className="flex gap-2 text-[#147b9c]">
-          {icons.map((Icon, index) => (
-            <a
-              key={index}
-              href={section.socialLinks?.[index]?.href || "#"}
-              aria-label={section.socialLinks?.[index]?.label || "Social link"}
-              className="rounded-full border border-[#d4e3e6] p-2"
+    <section className="social-feed" aria-labelledby="social-feed-title">
+      <div className="social-feed__inner">
+        <div className="social-feed__top">
+          <h2 id="social-feed-title" className="social-feed__title">
+            {section.heading?.title || "Follow Us"}
+          </h2>
+
+          <div className="social-feed__links" aria-label="Social media links">
+            {icons.map((Icon, index) => (
+              <motion.a
+                key={index}
+                href={section.socialLinks?.[index]?.href || "#"}
+                target={section.socialLinks?.[index]?.openInNewTab ? "_blank" : undefined}
+                rel={section.socialLinks?.[index]?.openInNewTab ? "noreferrer" : undefined}
+                aria-label={section.socialLinks?.[index]?.label || "Social link"}
+                className="social-feed__link"
+                whileHover={prefersReducedMotion ? undefined : { y: -3, scale: 1.06 }}
+                whileTap={prefersReducedMotion ? undefined : { scale: 0.96 }}
+                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Icon aria-hidden="true" />
+              </motion.a>
+            ))}
+          </div>
+        </div>
+
+        <div className="social-feed__grid">
+          {(section.images || []).slice(0, 4).map((image, index) => (
+            <motion.div
+              key={`${image.url || "social"}-${index}`}
+              className="social-feed__item"
+              initial={prefersReducedMotion ? false : { y: 42, opacity: 0, scale: 0.97 }}
+              whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.72,
+                delay: prefersReducedMotion ? 0 : index * 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
-              <Icon size={15} />
-            </a>
+              <CmsImage
+                image={image}
+                fallbackLabel={`Social image ${index + 1}`}
+                className="social-feed__image-wrap"
+                imageClassName="social-feed__image"
+                sizes="(max-width: 767px) 88vw, (max-width: 1024px) 42vw, 270px"
+              />
+            </motion.div>
           ))}
         </div>
-      </div>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        {(section.images || []).slice(0, 4).map((image, index) => (
-          <CmsImage
-            key={`${image.url || "social"}-${index}`}
-            image={image}
-            fallbackLabel={`Social image ${index + 1}`}
-            className="aspect-square rounded-lg"
-            sizes="(max-width: 768px) 50vw, 25vw"
-          />
-        ))}
       </div>
     </section>
   );

@@ -20,6 +20,7 @@ const linkProjection = `{
 const headingProjection = `{
   eyebrow,
   title,
+  accentTitle,
   subtitle,
   description
 }`;
@@ -27,17 +28,17 @@ const headingProjection = `{
 const cardProjection = `{
   title,
   description,
+  theme,
   image ${imageWithAltProjection},
   cta ${ctaProjection}
 }`;
 
-export const homepageQuery = `*[_type == "homepage"][0] {
+export const homepageQuery = `*[_type == "homepage" && _id == "homepage-main"][0] {
   seo {
     title,
     description,
     image ${imageWithAltProjection}
   },
-  navigation[] ${linkProjection},
   hero {
     heading,
     subtitle,
@@ -46,12 +47,26 @@ export const homepageQuery = `*[_type == "homepage"][0] {
     ctas[] ${ctaProjection},
     valueBar
   },
+  heroContactBand {
+    text,
+    ctas[] ${ctaProjection}
+  },
   intro {
     heading ${headingProjection},
     image ${imageWithAltProjection},
     ctas[] ${ctaProjection},
     imagePosition,
     theme
+  },
+  whyDubai {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    items[] {
+      title,
+      description,
+      iconType,
+      icon ${imageWithAltProjection}
+    }
   },
   ctaBand {
     text,
@@ -84,6 +99,7 @@ export const homepageQuery = `*[_type == "homepage"][0] {
   },
   learningPhases {
     heading ${headingProjection},
+    cta ${ctaProjection},
     cards[] ${cardProjection}
   },
   tour {
@@ -92,23 +108,33 @@ export const homepageQuery = `*[_type == "homepage"][0] {
   },
   news {
     heading ${headingProjection},
+    cta ${ctaProjection},
     posts[] ${cardProjection}
   },
   instagram {
     heading ${headingProjection},
     images[] ${imageWithAltProjection},
     socialLinks[] ${linkProjection}
-  },
-  footer {
-    logoText,
-    contactText,
-    columns[] {
-      title,
-      links[] ${linkProjection}
-    },
-    socialLinks[] ${linkProjection},
-    legalLinks[] ${linkProjection}
   }
+}`;
+
+export const siteHeaderQuery = `*[_type == "siteHeader" && _id == "site-header-main"][0] {
+  logo ${imageWithAltProjection},
+  menuIcon ${imageWithAltProjection},
+  bookTourButton ${ctaProjection},
+  applyNowButton ${ctaProjection},
+  navigation[] ${linkProjection}
+}`;
+
+export const siteFooterQuery = `*[_type == "siteFooter" && _id == "site-footer"][0] {
+  logoText,
+  contactText,
+  columns[] {
+    title,
+    links[] ${linkProjection}
+  },
+  socialLinks[] ${linkProjection},
+  legalLinks[] ${linkProjection}
 }`;
 
 export const legacyHomeSectionsQuery = `*[_type == "homeSection"] | order(order asc) {

@@ -7,8 +7,8 @@ type CtaLinkProps = {
 };
 
 const variantClasses: Record<NonNullable<Cta["variant"]>, string> = {
-  primary: "bg-white text-[#0b6f8c] hover:bg-[#eef8f8]",
-  secondary: "bg-[#23b6bc] text-white hover:bg-[#159aa1]",
+  primary: "bg-white text-[#1e6f9b] hover:bg-[#eef8f8]",
+  secondary: "bg-[#31b2b6] text-white hover:bg-[#31b2b6]",
   ghost: "border border-white/70 text-white hover:bg-white/10",
 };
 

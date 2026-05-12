@@ -20,7 +20,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[#08395d]/75 via-[#0d5b78]/45 to-transparent" />
       <div className="relative z-10 mx-auto flex min-h-[620px] max-w-6xl flex-col justify-center px-4 pb-12 pt-28 md:min-h-[92vh] md:px-8">
-        <div className="max-w-lg rounded-br-[90px] bg-[#187ca7]/95 px-7 py-9 text-white shadow-2xl">
+        <div className="max-w-lg rounded-br-[90px] bg-[#1e6f9b]/95 px-7 py-9 text-white shadow-2xl">
           {hero.subtitle && <p className="mb-3 text-sm font-semibold text-white/80">{hero.subtitle}</p>}
           <h1 className="text-3xl font-semibold leading-tight md:text-5xl">{hero.heading}</h1>
           <RichText blocks={hero.description} className="mt-5 space-y-3 text-sm leading-7 text-white/90" />

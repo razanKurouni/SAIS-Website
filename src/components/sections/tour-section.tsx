@@ -1,6 +1,4 @@
-import { CmsImage } from "@/components/ui/cms-image";
-import { CtaLink } from "@/components/ui/cta-link";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { TourActionCards } from "@/components/sections/tour-action-cards";
 import type { HomepageData } from "@/types/sanity";
 
 type TourSectionProps = {
@@ -8,33 +6,14 @@ type TourSectionProps = {
 };
 
 export function TourSection({ section }: TourSectionProps) {
-  if (!section) {
+  if (!section?.cards?.length) {
     return null;
   }
 
   return (
-    <section className="py-10">
-      <SectionHeading heading={section.heading} align="center" titleClassName="text-[#20aeb7]" />
-      <div className="mx-auto mt-7 grid max-w-4xl gap-6 md:grid-cols-2">
-        {(section.cards || []).map((card, index) => (
-          <article key={`${card.title}-${index}`} className="overflow-hidden rounded-xl bg-[#147b9c] text-white shadow-sm">
-            <CmsImage
-              image={card.image}
-              fallbackLabel={card.title}
-              className="aspect-[16/10]"
-              sizes="(max-width: 768px) 100vw, 420px"
-            />
-            <div className="p-5">
-              <h3 className="text-xl font-semibold">{card.title}</h3>
-              {card.description && <p className="mt-2 text-sm leading-6 text-white/85">{card.description}</p>}
-              {card.cta && (
-                <div className="mt-4">
-                  <CtaLink cta={{ ...card.cta, variant: "primary" }} />
-                </div>
-              )}
-            </div>
-          </article>
-        ))}
+    <section className="tour-actions" aria-label="Admissions actions">
+      <div className="tour-actions__inner">
+        <TourActionCards cards={section.cards} />
       </div>
     </section>
   );

@@ -16,6 +16,12 @@ export const sectionHeading = {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "accentTitle",
+      title: "Accent Title",
+      type: "string",
+      description: "Optional highlighted part of the title, shown in the accent color.",
+    },
+    {
       name: "subtitle",
       title: "Subtitle",
       type: "string",

@@ -1,9 +1,14 @@
 import { createClient } from "@sanity/client";
-import { homepageQuery, legacyHomeSectionsQuery } from "@/sanity/queries/homepage";
+import {
+  homepageQuery,
+  legacyHomeSectionsQuery,
+  siteFooterQuery,
+  siteHeaderQuery,
+} from "@/sanity/queries/homepage";
 import { mapLegacySectionsToHomepage } from "@/lib/content";
-import type { HomepageData, LegacyHomeSection } from "@/types/sanity";
+import type { HomepageData, LegacyHomeSection, SiteFooter, SiteHeader } from "@/types/sanity";
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "9oxycbmd";
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "uwffig4f";
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
 
 function getSanityClient() {
@@ -17,13 +22,26 @@ function getSanityClient() {
 }
 
 export async function getHomepage(): Promise<HomepageData> {
-  const client = getSanityClient();
-  const homepage = await client.fetch<HomepageData | null>(homepageQuery);
+  try {
+    const client = getSanityClient();
+    const [homepage, siteHeader, siteFooter] = await Promise.all([
+      client.fetch<HomepageData | null>(homepageQuery),
+      client.fetch<SiteHeader | null>(siteHeaderQuery),
+      client.fetch<SiteFooter | null>(siteFooterQuery),
+    ]);
 
-  if (homepage) {
-    return homepage;
+    if (homepage) {
+      return {
+        ...homepage,
+        header: siteHeader || homepage.header,
+        navigation: siteHeader?.navigation || homepage.navigation,
+        footer: siteFooter || homepage.footer,
+      };
+    }
+
+    const legacySections = await client.fetch<LegacyHomeSection[]>(legacyHomeSectionsQuery);
+    return mapLegacySectionsToHomepage(legacySections || []);
+  } catch {
+    return mapLegacySectionsToHomepage([]);
   }
-
-  const legacySections = await client.fetch<LegacyHomeSection[]>(legacyHomeSectionsQuery);
-  return mapLegacySectionsToHomepage(legacySections || []);
 }

@@ -1,60 +1,186 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
-import { RichText } from "@/components/ui/rich-text";
-import type { SiteFooter as SiteFooterData } from "@/types/sanity";
+import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import type { FooterColumn, LinkField, SiteFooter as SiteFooterData } from "@/types/sanity";
 
 type SiteFooterProps = {
   footer?: SiteFooterData;
 };
 
-const socialIcons = [Youtube, Instagram, Facebook, Twitter];
+const defaultColumns: FooterColumn[] = [
+  {
+    links: [
+      { label: "About", href: "#about" },
+      { label: "Academics", href: "#academics" },
+      { label: "Our Community", href: "#community" },
+      { label: "Student Life", href: "#student-life" },
+    ],
+  },
+  {
+    links: [
+      { label: "Campus Tours", href: "#tour" },
+      { label: "Admissions Process", href: "#admissions" },
+      { label: "FAQ’s", href: "#faq" },
+      { label: "Fees", href: "#fees" },
+    ],
+  },
+  {
+    links: [
+      { label: "News & Events", href: "#news" },
+      { label: "Contact Us", href: "#contact" },
+      { label: "Careers", href: "#careers" },
+    ],
+  },
+];
+
+const defaultSocialLinks: LinkField[] = [
+  { label: "Instagram", href: "#instagram" },
+  { label: "Facebook", href: "#facebook" },
+  { label: "Twitter", href: "#twitter" },
+];
+
+const defaultLegalLinks: LinkField[] = [
+  { label: "Terms & Conditions", href: "#terms" },
+  { label: "Privacy Policy", href: "#privacy" },
+];
+
+const contactItems = [
+  {
+    icon: MapPin,
+    label: "Address",
+    text: "Sharjah American\nInternational School - Dubai Campus\nP.O. Box 47755 , Al Warqa 1,\nDubai, UAE.",
+    href: "#location",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    text: "+971 4 280 1111",
+    href: "tel:+97142801111",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    text: "sais_dubai@saisdubai.com",
+    href: "mailto:sais_dubai@saisdubai.com",
+  },
+];
+
+const socialIcons = [Instagram, Facebook, Twitter];
+
+function findSocialLink(links: LinkField[], label: string, fallback: LinkField) {
+  return links.find((link) => link.label?.toLowerCase().includes(label.toLowerCase())) || fallback;
+}
+
+function FooterLink({ link }: { link: LinkField }) {
+  return (
+    <Link
+      href={link.href || "#"}
+      target={link.openInNewTab ? "_blank" : undefined}
+      rel={link.openInNewTab ? "noreferrer" : undefined}
+      className="site-footer__link"
+    >
+      {link.label}
+    </Link>
+  );
+}
 
 export function SiteFooter({ footer }: SiteFooterProps) {
-  if (!footer) {
-    return null;
-  }
+  const columns = footer?.columns?.some((column) => column.links?.length) ? footer.columns : defaultColumns;
+  const socialLinks = footer?.socialLinks?.length ? footer.socialLinks : defaultSocialLinks;
+  const legalLinks = footer?.legalLinks?.length ? footer.legalLinks : defaultLegalLinks;
 
   return (
-    <footer className="bg-[#149ca7] text-white">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-[1.2fr_1.6fr_0.8fr] md:px-8">
-        <div>
-          <p className="text-3xl font-semibold tracking-[0.2em]">{footer.logoText || "SAIS"}</p>
-          <RichText blocks={footer.contactText} className="mt-4 space-y-2 text-sm leading-6 text-white/88" />
-        </div>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {(footer.columns || []).map((column) => (
-            <div key={column.title || column.links?.[0]?.label}>
-              {column.title && <h3 className="mb-3 text-sm font-semibold">{column.title}</h3>}
-              <div className="grid gap-2 text-sm text-white/82">
-                {(column.links || []).map((link) => (
-                  <Link key={`${link.label}-${link.href}`} href={link.href || "#"} className="hover:text-white">
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-col gap-5 md:items-end">
-          <div className="flex gap-2">
-            {socialIcons.map((Icon, index) => (
-              <a
-                key={index}
-                href={footer.socialLinks?.[index]?.href || "#"}
-                aria-label={footer.socialLinks?.[index]?.label || "Social link"}
-                className="rounded-full border border-white/60 p-2"
-              >
-                <Icon size={16} />
-              </a>
-            ))}
+    <footer className="site-footer">
+      <div className="site-footer__main">
+        <svg className="site-footer__shape" viewBox="0 0 760 436" preserveAspectRatio="none" aria-hidden="true">
+          <path
+            d="M0 0H674C635 38 633 103 660 160L704 249C740 324 713 394 667 461L0 436Z"
+            fill="#1E6F9B"
+          />
+          <path
+            d="M674 -24C635 38 633 103 660 160L704 249C740 324 713 394 667 461"
+            fill="none"
+            stroke="#31B2B6"
+            strokeLinecap="round"
+            strokeWidth="44"
+          />
+        </svg>
+
+        <div className="site-footer__content">
+          <div className="site-footer__brand-area">
+            <Image
+              src="/sais-footer-logo-lockup.png"
+              alt="Sharjah American International School Dubai"
+              width={390}
+              height={88}
+              className="site-footer__logo"
+            />
+
+            <address className="site-footer__contact">
+              {contactItems.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <a key={item.label} href={item.href} className="site-footer__contact-item">
+                    <span className="site-footer__contact-icon" aria-hidden="true">
+                      <Icon />
+                    </span>
+                    <span>{item.text}</span>
+                  </a>
+                );
+              })}
+            </address>
           </div>
-          <div className="flex flex-wrap gap-3 md:justify-end">
-            {(footer.legalLinks || []).map((link) => (
-              <Link key={`${link.label}-${link.href}`} href={link.href || "#"} className="text-xs text-white/80">
+
+          <div className="site-footer__right">
+            <div className="site-footer__social" aria-label="Social media links">
+              {socialIcons.map((Icon, index) => {
+                const link = findSocialLink(socialLinks, defaultSocialLinks[index].label, defaultSocialLinks[index]);
+
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href || "#"}
+                    target={link.openInNewTab ? "_blank" : undefined}
+                    rel={link.openInNewTab ? "noreferrer" : undefined}
+                    aria-label={link.label}
+                    className="site-footer__social-link"
+                  >
+                    <Icon aria-hidden="true" />
+                  </a>
+                );
+              })}
+            </div>
+
+            <nav className="site-footer__nav" aria-label="Footer navigation">
+              {columns.slice(0, 3).map((column, columnIndex) => (
+                <div key={column.title || `footer-column-${columnIndex}`} className="site-footer__column">
+                  {(column.links || []).map((link) => (
+                    <FooterLink key={`${link.label}-${link.href}`} link={link} />
+                  ))}
+                </div>
+              ))}
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div className="site-footer__bottom">
+        <div className="site-footer__bottom-inner">
+          <p>© 2026 Sharjah American International School - Dubai Campus</p>
+
+          <nav className="site-footer__legal" aria-label="Legal links">
+            {legalLinks.map((link) => (
+              <Link
+                key={`${link.label}-${link.href}`}
+                href={link.href || "#"}
+                target={link.openInNewTab ? "_blank" : undefined}
+                rel={link.openInNewTab ? "noreferrer" : undefined}
+              >
                 {link.label}
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
       </div>
     </footer>

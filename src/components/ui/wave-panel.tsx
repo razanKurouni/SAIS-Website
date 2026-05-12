@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { SaisCurvedPanel } from "@/components/ui/sais-curved-panel";
 
 type WavePanelProps = {
   children: ReactNode;
@@ -7,18 +8,35 @@ type WavePanelProps = {
   tone?: "blue" | "teal" | "light";
 };
 
-const toneClasses = {
-  blue: "bg-[#167ca8] text-white",
-  teal: "bg-[#28b9ba] text-white",
-  light: "bg-white text-[#10324b]",
+const toneColors = {
+  blue: {
+    fillColor: "#1e6f9b",
+    accentColor: "#31b2b6",
+    className: "text-white",
+  },
+  teal: {
+    fillColor: "#31b2b6",
+    accentColor: "#d97252",
+    className: "text-white",
+  },
+  light: {
+    fillColor: "#ffffff",
+    accentColor: "#31b2b6",
+    className: "text-[#10324b]",
+  },
 };
 
 export function WavePanel({ children, className = "", id, tone = "blue" }: WavePanelProps) {
+  const colors = toneColors[tone];
+
   return (
-    <section id={id} className={`relative overflow-hidden rounded-[10px] ${toneClasses[tone]} ${className}`}>
-      <div className="pointer-events-none absolute -right-12 top-0 h-full w-32 rounded-l-[70%] bg-white/90" />
-      <div className="pointer-events-none absolute -right-4 top-10 h-[70%] w-12 rounded-l-[70%] bg-[#25b9bd]" />
-      <div className="relative z-10">{children}</div>
-    </section>
+    <SaisCurvedPanel
+      id={id}
+      fillColor={colors.fillColor}
+      accentColor={colors.accentColor}
+      className={`rounded-[10px] ${colors.className} ${className}`}
+    >
+      {children}
+    </SaisCurvedPanel>
   );
 }

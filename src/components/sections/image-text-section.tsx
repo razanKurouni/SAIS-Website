@@ -29,8 +29,8 @@ export function ImageTextSection({ section, id }: ImageTextSectionProps) {
         <div className={section.theme === "light" ? "" : "text-white"}>
           <SectionHeading
             heading={section.heading}
-            eyebrowClassName={section.theme === "light" ? "text-[#20aeb7]" : "text-white/70"}
-            titleClassName={section.theme === "light" ? "text-[#0c5d86]" : "text-white"}
+            eyebrowClassName={section.theme === "light" ? "text-[#31b2b6]" : "text-white/70"}
+            titleClassName={section.theme === "light" ? "text-[#1e6f9b]" : "text-white"}
             descriptionClassName={section.theme === "light" ? "text-[#557189]" : "text-white/90"}
           />
           {section.ctas && section.ctas.length > 0 && (

@@ -5,13 +5,6 @@ export const homepage = {
   fields: [
     { name: "seo", title: "SEO", type: "seo" },
     {
-      name: "navigation",
-      title: "Navigation Links",
-      type: "array",
-      of: [{ type: "linkField" }],
-      description: "Top navigation items shown over the hero image.",
-    },
-    {
       name: "hero",
       title: "Hero Section",
       type: "object",
@@ -30,7 +23,44 @@ export const homepage = {
         },
       ],
     },
+    {
+      name: "heroContactBand",
+      title: "Hero Contact Band",
+      type: "object",
+      description: "The turquoise contact strip shown below the hero.",
+      fields: [
+        {
+          name: "text",
+          title: "Text",
+          type: "text",
+          rows: 2,
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: "ctas",
+          title: "Buttons",
+          type: "array",
+          of: [{ type: "cta" }],
+        },
+      ],
+    },
     { name: "intro", title: "Intro Section", type: "imageTextSection" },
+    {
+      name: "whyDubai",
+      title: "Why SAIS Dubai Section",
+      type: "object",
+      description: "Edit the heading, subtitle, building image, icon images, and the visible text shown under each icon.",
+      fields: [
+        { name: "heading", title: "Website Heading & Intro Text", type: "sectionHeading" },
+        { name: "image", title: "Building Image", type: "imageWithAlt" },
+        {
+          name: "items",
+          title: "Icon Items / Visible Text",
+          type: "array",
+          of: [{ type: "whyDubaiItem" }],
+        },
+      ],
+    },
     {
       name: "ctaBand",
       title: "CTA Band",
@@ -76,6 +106,7 @@ export const homepage = {
       name: "quickLinks",
       title: "Quick Links",
       type: "object",
+      description: "Edit the section title and all quick-link cards: image, title, text, button, and color theme.",
       fields: [
         { name: "heading", title: "Heading", type: "sectionHeading" },
         { name: "cards", title: "Cards", type: "array", of: [{ type: "featureCard" }] },
@@ -87,6 +118,12 @@ export const homepage = {
       type: "object",
       fields: [
         { name: "heading", title: "Heading", type: "sectionHeading" },
+        {
+          name: "cta",
+          title: "Section Button",
+          type: "cta",
+          description: "The See More button shown at the top right of the section.",
+        },
         { name: "cards", title: "Phase Cards", type: "array", of: [{ type: "featureCard" }] },
       ],
     },
@@ -103,8 +140,15 @@ export const homepage = {
       name: "news",
       title: "Latest News",
       type: "object",
+      description: "Edit the latest news title, top button, and all news cards.",
       fields: [
         { name: "heading", title: "Heading", type: "sectionHeading" },
+        {
+          name: "cta",
+          title: "Section Button",
+          type: "cta",
+          description: "The See All button shown at the top right of the section.",
+        },
         { name: "posts", title: "News Cards", type: "array", of: [{ type: "featureCard" }] },
       ],
     },
@@ -116,31 +160,6 @@ export const homepage = {
         { name: "heading", title: "Heading", type: "sectionHeading" },
         { name: "images", title: "Images", type: "array", of: [{ type: "imageWithAlt" }] },
         { name: "socialLinks", title: "Social Links", type: "array", of: [{ type: "linkField" }] },
-      ],
-    },
-    {
-      name: "footer",
-      title: "Footer",
-      type: "object",
-      fields: [
-        { name: "logoText", title: "Logo Text", type: "string" },
-        { name: "contactText", title: "Contact Text", type: "blockContent" },
-        {
-          name: "columns",
-          title: "Link Columns",
-          type: "array",
-          of: [
-            {
-              type: "object",
-              fields: [
-                { name: "title", title: "Column Title", type: "string" },
-                { name: "links", title: "Links", type: "array", of: [{ type: "linkField" }] },
-              ],
-            },
-          ],
-        },
-        { name: "socialLinks", title: "Social Links", type: "array", of: [{ type: "linkField" }] },
-        { name: "legalLinks", title: "Legal Links", type: "array", of: [{ type: "linkField" }] },
       ],
     },
   ],

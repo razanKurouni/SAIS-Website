@@ -1,54 +1,44 @@
-import { AccreditationsSection } from "@/components/sections/accreditations-section";
-import { CardGridSection } from "@/components/sections/card-grid-section";
-import { CtaBand } from "@/components/sections/cta-band";
-import { FactsSection } from "@/components/sections/facts-section";
-import { HeroSection } from "@/components/sections/hero-section";
-import { ImageTextSection } from "@/components/sections/image-text-section";
-import { SiteFooter } from "@/components/sections/site-footer";
 import { SiteHeader } from "@/components/sections/site-header";
-import { SocialSection } from "@/components/sections/social-section";
+import { HomeHero } from "@/components/sections/home-hero";
+import { HeroContactBand } from "@/components/sections/hero-contact-band";
+import { WhyDubaiSection } from "@/components/sections/why-dubai-section";
+import { AccreditationsSection } from "@/components/sections/accreditations-section";
+import { FactsSection } from "@/components/sections/facts-section";
+import { QuickLinksSection } from "@/components/sections/quick-links-section";
+import { LearningPhasesSection } from "@/components/sections/learning-phases-section";
+import { TourIntroSection } from "@/components/sections/tour-intro-section";
 import { TourSection } from "@/components/sections/tour-section";
+import { ApproachSection } from "@/components/sections/approach-section";
+import { LatestNewsSection } from "@/components/sections/latest-news-section";
+import { SocialSection } from "@/components/sections/social-section";
+import { SiteFooter } from "@/components/sections/site-footer";
 import type { HomepageData } from "@/types/sanity";
 
 type HomePageProps = {
-  data: HomepageData;
+  data?: HomepageData;
 };
 
 export function HomePage({ data }: HomePageProps) {
   return (
-    <div className="bg-[#edf3f4] text-[#10324b]">
-      <SiteHeader links={data.navigation} />
-      {data.hero && <HeroSection hero={data.hero} />}
+    <div className="preview-page">
+      <SiteHeader settings={data?.header} links={data?.navigation} />
 
-      <main className="mx-auto max-w-6xl space-y-8 px-4 py-10 md:px-8">
-        <ImageTextSection section={data.intro} id="intro" />
-        <CtaBand section={data.ctaBand} />
-        <AccreditationsSection section={data.accreditations} />
-        <ImageTextSection section={data.whySection} id="why-sais" />
-        <FactsSection section={data.facts} />
-        <CardGridSection
-          id="quick-links"
-          heading={data.quickLinks?.heading}
-          cards={data.quickLinks?.cards}
-          variant="quick"
-        />
-        <CardGridSection
-          id="learning"
-          heading={data.learningPhases?.heading}
-          cards={data.learningPhases?.cards}
-          variant="phase"
-        />
-        <TourSection section={data.tour} />
-        <CardGridSection
-          id="news"
-          heading={data.news?.heading}
-          cards={data.news?.posts}
-          variant="news"
-        />
-        <SocialSection section={data.instagram} />
+      <main id="home" className="preview-main">
+        <HomeHero hero={data?.hero} />
+        <HeroContactBand section={data?.heroContactBand} />
+        <AccreditationsSection section={data?.accreditations} />
+        <ApproachSection section={data?.whySection} />
+        <FactsSection section={data?.facts} />
+        <WhyDubaiSection section={data?.whyDubai} />
+        <QuickLinksSection section={data?.quickLinks} />
+        <LearningPhasesSection section={data?.learningPhases} />
+        <TourIntroSection section={data?.tour} />
+        <TourSection section={data?.tour} />
+        <LatestNewsSection section={data?.news} />
+        <SocialSection section={data?.instagram} />
       </main>
 
-      <SiteFooter footer={data.footer} />
+      <SiteFooter footer={data?.footer} />
     </div>
   );
 }

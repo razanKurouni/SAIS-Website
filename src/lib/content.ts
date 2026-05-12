@@ -10,8 +10,8 @@ import type {
   SectionHeading,
 } from "@/types/sanity";
 
-export function richTextToPlainText(blocks: PortableTextBlock[] = []) {
-  return blocks
+export function richTextToPlainText(blocks?: PortableTextBlock[] | null) {
+  return (blocks || [])
     .map((block) =>
       (block.children || [])
         .map((child) => child.text || "")
@@ -22,7 +22,7 @@ export function richTextToPlainText(blocks: PortableTextBlock[] = []) {
     .join("\n\n");
 }
 
-export function richTextToParagraphs(blocks: PortableTextBlock[] = []) {
+export function richTextToParagraphs(blocks?: PortableTextBlock[] | null) {
   return richTextToPlainText(blocks)
     .split("\n\n")
     .map((paragraph) => paragraph.trim())
@@ -102,11 +102,13 @@ function linksFromLabels(labels: string[] = []): LinkField[] {
 export function mapLegacySectionsToHomepage(sections: LegacyHomeSection[]): HomepageData {
   const hero = sectionByOrder(sections, 1);
   const intro = sectionByOrder(sections, 2);
+  const approach = sectionByOrder(sections, 3);
   const accreditations = sectionByOrder(sections, 4);
   const why = sectionByOrder(sections, 5);
   const facts = sectionByOrder(sections, 6);
   const quickLinks = sectionByOrder(sections, 7);
   const phases = sectionByOrder(sections, 8);
+  const admissions = sectionByOrder(sections, 9);
   const tour = sectionByOrder(sections, 10);
   const news = sectionByOrder(sections, 11);
   const instagram = sectionByOrder(sections, 12);
@@ -176,6 +178,7 @@ export function mapLegacySectionsToHomepage(sections: LegacyHomeSection[]): Home
     },
     learningPhases: {
       heading: asHeading(phases?.title || "Our Learning Phases"),
+      cta: asCta("See More", "#learning-phases"),
       cards: cardsFromLegacy(phases, "Learn More"),
     },
     tour: {

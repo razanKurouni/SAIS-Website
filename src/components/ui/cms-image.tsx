@@ -21,7 +21,7 @@ export function CmsImage({
   fallbackLabel = "Image",
 }: CmsImageProps) {
   return (
-    <div className={`relative overflow-hidden bg-[#1f7ea5] ${className}`}>
+    <div className={`relative overflow-hidden bg-[#1e6f9b] ${className}`}>
       {image?.url ? (
         <Image
           src={image.url}
@@ -32,7 +32,7 @@ export function CmsImage({
           priority={priority}
         />
       ) : (
-        <div className="flex h-full w-full flex-col justify-end bg-[radial-gradient(circle_at_20%_18%,rgba(255,255,255,0.32),transparent_35%),linear-gradient(135deg,#156987,#2bb9bd)] p-5 text-white">
+        <div className="flex h-full w-full flex-col justify-end bg-[radial-gradient(circle_at_20%_18%,rgba(255,255,255,0.32),transparent_35%),linear-gradient(135deg,#1e6f9b,#31b2b6)] p-5 text-white">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
             Image Slot
           </span>

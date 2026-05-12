@@ -29,6 +29,7 @@ export type Cta = LinkField & {
 export type SectionHeading = {
   eyebrow?: string;
   title: string;
+  accentTitle?: string;
   subtitle?: string;
   description?: PortableTextBlock[];
 };
@@ -49,6 +50,7 @@ export type FeatureCard = {
   description?: string;
   image?: SanityImage;
   cta?: Cta;
+  theme?: "blue" | "teal" | "orange" | "gray";
 };
 
 export type ImageTextSection = {
@@ -65,6 +67,13 @@ export type LogoItem = {
   image?: SanityImage;
 };
 
+export type WhyDubaiItem = {
+  title?: string;
+  description: string;
+  iconType?: "student" | "globe" | "learning" | "family";
+  icon?: SanityImage;
+};
+
 export type FooterColumn = {
   title?: string;
   links?: LinkField[];
@@ -78,8 +87,20 @@ export type SiteFooter = {
   legalLinks?: LinkField[];
 };
 
+export type HeaderSettings = {
+  logo?: SanityImage;
+  menuIcon?: SanityImage;
+  bookTourButton?: Cta;
+  applyNowButton?: Cta;
+};
+
+export type SiteHeader = HeaderSettings & {
+  navigation?: LinkField[];
+};
+
 export type HomepageData = {
   seo?: Seo;
+  header?: HeaderSettings;
   navigation?: LinkField[];
   hero?: {
     heading: string;
@@ -89,7 +110,16 @@ export type HomepageData = {
     ctas?: Cta[];
     valueBar?: string[];
   };
+  heroContactBand?: {
+    text?: string;
+    ctas?: Cta[];
+  };
   intro?: ImageTextSection;
+  whyDubai?: {
+    heading: SectionHeading;
+    image?: SanityImage;
+    items?: WhyDubaiItem[];
+  };
   ctaBand?: {
     text: string;
     ctas?: Cta[];
@@ -109,6 +139,7 @@ export type HomepageData = {
   };
   learningPhases?: {
     heading: SectionHeading;
+    cta?: Cta;
     cards?: FeatureCard[];
   };
   tour?: {
@@ -117,6 +148,7 @@ export type HomepageData = {
   };
   news?: {
     heading: SectionHeading;
+    cta?: Cta;
     posts?: FeatureCard[];
   };
   instagram?: {
