@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/sections/site-header";
 import { HomeHero } from "@/components/sections/home-hero";
+import { IntroFeatureSection } from "@/components/sections/intro-feature-section";
 import { HeroContactBand } from "@/components/sections/hero-contact-band";
 import { WhyDubaiSection } from "@/components/sections/why-dubai-section";
 import { AccreditationsSection } from "@/components/sections/accreditations-section";
@@ -25,6 +26,7 @@ export function HomePage({ data }: HomePageProps) {
 
       <main id="home" className="preview-main">
         <HomeHero hero={data?.hero} />
+        <IntroFeatureSection section={data?.intro} />
         <HeroContactBand section={data?.heroContactBand} />
         <AccreditationsSection section={data?.accreditations} />
         <ApproachSection section={data?.whySection} />

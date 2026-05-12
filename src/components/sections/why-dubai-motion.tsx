@@ -33,8 +33,8 @@ export function WhyDubaiMotion({ section }: WhyDubaiMotionProps) {
         transition={{ duration: 0.82, ease: [0.16, 1, 0.3, 1] }}
       >
         <SaisCurvedPanel
-          className="why-dubai__panel"
-          contentClassName="why-dubai__panel-content"
+          className="why-dubai__shape"
+          contentClassName="why-dubai__shape-content"
           fillColor="#31b2b6"
           accentColor="#d97252"
           strokeWidth={88}
@@ -95,28 +95,30 @@ export function WhyDubaiMotion({ section }: WhyDubaiMotionProps) {
               })}
             </div>
           </div>
+        </SaisCurvedPanel>
 
-          <motion.div
-            className="why-dubai__image-wrap"
-            initial={prefersReducedMotion ? false : { x: 64, opacity: 0, rotate: 1.5 }}
-            whileInView={prefersReducedMotion ? undefined : { x: 0, opacity: 1, rotate: 0 }}
-            viewport={{ once: false, amount: 0.38 }}
-            transition={{ duration: 0.88, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
+        <motion.div
+          className="why-dubai__media"
+          initial={prefersReducedMotion ? false : { x: 64, opacity: 0, rotate: 1.5 }}
+          whileInView={prefersReducedMotion ? undefined : { x: 0, opacity: 1, rotate: 0 }}
+          viewport={{ once: false, amount: 0.38 }}
+          transition={{ duration: 0.88, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="why-dubai__image-wrap">
             {section.image?.url ? (
               <Image
                 src={section.image.url}
                 alt={section.image.alt || title}
                 fill
                 quality={82}
-                sizes="(max-width: 767px) 88vw, 38vw"
+                sizes="(max-width: 767px) 80vw, 44vw"
                 className="why-dubai__image"
               />
             ) : (
               <div className="why-dubai__image-fallback">{title}</div>
             )}
-          </motion.div>
-        </SaisCurvedPanel>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

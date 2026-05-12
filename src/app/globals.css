@@ -260,6 +260,94 @@ button[aria-label="Open Next.js Dev Tools"] {
   padding: clamp(40px, 5.5vw, 64px) 0;
 }
 
+.intro-feature {
+  background: #ffffff;
+  padding: clamp(44px, 6vw, 72px) 0 clamp(34px, 5vw, 56px);
+}
+
+.intro-feature__layout {
+  position: relative;
+  width: 80%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.intro-feature__media {
+  position: relative;
+  z-index: 2;
+  width: 30%;
+  padding: 70px 0;
+}
+
+.intro-feature__image-shell {
+  position: relative;
+  width: 150%;
+  aspect-ratio: 1560 / 1312;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #d8e7ef;
+  box-shadow: 0 26px 58px rgba(11, 47, 70, 0.16);
+}
+
+.intro-feature__shape {
+  position: relative;
+  width: 70%;
+  min-height: clamp(420px, 44vw, 660px);
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.intro-feature__shape-content {
+  min-height: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.intro-feature__content {
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+  padding: clamp(54px, 6vw, 78px) 10% clamp(54px, 6vw, 78px) 25%;
+}
+
+.intro-feature__title {
+  max-width: 80%;
+  margin: 0;
+  color: #31b2b6;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.03em;
+}
+
+.intro-feature__description {
+  max-width: 32rem;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: clamp(0.96rem, 1.08vw, 1.1rem);
+  line-height: 1.72;
+}
+
+.intro-feature__description p {
+  margin: 0;
+}
+
+.intro-feature__description p + p {
+  margin-top: 1.65rem;
+}
+
+.intro-feature__image {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 840ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.intro-feature__layout:hover .intro-feature__image {
+  transform: scale(1.035);
+}
+
 .hero-contact-band__inner {
   width: 80%;
   max-width: 100%;
@@ -349,43 +437,44 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .why-dubai {
   position: relative;
-  overflow: hidden;
-  background:
-    linear-gradient(180deg, #ffffff 0 46%, #1e6f9b 46% 100%);
-  padding: clamp(50px, 6.4vw, 82px) 0 clamp(60px, 7vw, 96px);
+  overflow: visible;
+  background: #ffffff;
+  padding: 0 0 clamp(54px, 3.4vw, 74px);
   color: #ffffff;
 }
 
 .why-dubai__card {
   position: relative;
-  width: 80%;
-  max-width: 1220px;
-  min-height: clamp(390px, 34vw, 500px);
+  width: 90%;
+  max-width: 100%;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: visible;
   filter: drop-shadow(0 24px 44px rgba(22, 95, 91, 0.12));
 }
 
-.why-dubai__panel {
-  width: min(62%, 760px);
-  min-height: clamp(390px, 34vw, 500px);
-  border-radius: 14px;
-  overflow: visible;
+.why-dubai__shape {
+  position: relative;
+  width: 60%;
+  min-height: clamp(390px, 34vw, 650px);
+  overflow: hidden;
+  border-radius: 20px;
+  left: 7%;
 }
 
-.why-dubai__panel-content {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(430px, 1.05fr);
-  width: min(90vw, 1220px);
-  min-height: clamp(390px, 34vw, 500px);
+.why-dubai__shape-content {
+  min-height: inherit;
+  display: flex;
   align-items: center;
-  gap: clamp(8px, 1.4vw, 22px);
 }
 
 .why-dubai__copy {
   position: relative;
   z-index: 2;
-  padding: clamp(38px, 4.5vw, 58px) clamp(76px, 7vw, 108px) clamp(36px, 4vw, 54px) clamp(36px, 4.5vw, 62px);
+  width: 100%;
+  padding: clamp(44px, 5vw, 68px) 24% clamp(42px, 4.5vw, 62px) 5%;
   text-align: center;
 }
 
@@ -480,17 +569,24 @@ button[aria-label="Open Next.js Dev Tools"] {
   transform: scale(1.1);
 }
 
+.why-dubai__media {
+  position: relative;
+  z-index: 2;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 70px 0;
+  right: 7%;
+}
+
 .why-dubai__image-wrap {
   position: relative;
-  z-index: 3;
-  align-self: center;
-  justify-self: end;
-  width: min(100%, 650px);
-  height: clamp(310px, 29vw, 420px);
-  margin: 0 0 0 0;
+  width: min(150%, 450px);
+  aspect-ratio: 764 / 756;
   overflow: hidden;
-  border-radius: 14px;
-  background: #e8eef1;
+  border-radius: 22px;
+  background: #e4edf0;
   box-shadow: 0 26px 58px rgba(11, 47, 70, 0.16);
 }
 
@@ -666,7 +762,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .quick-links {
   background: #1e6f9b;
-  padding: 20px 0 clamp(48px, 6vw, 72px);
+  padding: clamp(46px, 5.6vw, 66px) 0 clamp(54px, 6.4vw, 74px);
   color: #ffffff;
   overflow: hidden;
 }
@@ -2264,27 +2360,53 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 @media (max-width: 1120px) and (min-width: 768px) {
-  .why-dubai__panel {
+  .intro-feature__layout {
+    width: 92%;
+  }
+
+  .intro-feature__media {
+    width: 32%;
+  }
+
+  .intro-feature__image-shell {
+    width: 146%;
+  }
+
+  .intro-feature__shape {
+    width: min(62%, 760px);
+    min-height: 430px;
+  }
+
+  .intro-feature__content {
+    padding: 42px 8% 42px 23%;
+  }
+
+  .intro-feature__title {
+    font-size: clamp(1.54rem, 2.3vw, 2.1rem);
+  }
+
+  .intro-feature__description {
+    font-size: 0.95rem;
+  }
+
+  .why-dubai__shape {
     width: 68%;
   }
 
-  .why-dubai__panel-content {
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 14px;
-  }
-
   .why-dubai__copy {
-    padding: 34px 68px 34px 34px;
+    padding: 34px 22% 34px 8%;
   }
 
   .why-dubai__items {
     gap: 18px 24px;
   }
 
+  .why-dubai__media {
+    width: 32%;
+  }
+
   .why-dubai__image-wrap {
-    width: 100%;
-    height: 320px;
-    margin-right: 0;
+    width: 146%;
   }
 
   .quick-links-card {
@@ -2455,6 +2577,62 @@ button[aria-label="Open Next.js Dev Tools"] {
     max-width: none;
   }
 
+  .intro-feature {
+    padding: 28px 0 24px;
+  }
+
+  .intro-feature__layout {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .intro-feature__media {
+    width: 100%;
+    padding: 0;
+  }
+
+  .intro-feature__image-shell {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 18px;
+  }
+
+  .intro-feature__shape {
+    width: 100%;
+    min-height: auto;
+    margin-top: -10px;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .intro-feature__shape-content {
+    display: block;
+    min-height: auto;
+  }
+
+  .intro-feature__content {
+    padding: 74px 10% 42px;
+  }
+
+  .intro-feature .sais-curved-panel__svg {
+    transform: rotate(-90deg);
+    transform-origin: center;
+    top: -14%;
+    width: 100%;
+    height: 100vw;
+  }
+
+  .intro-feature__title {
+    max-width: 100%;
+    font-size: 1.42rem;
+  }
+
+  .intro-feature__description {
+    max-width: 100%;
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
   .hero-contact-band {
     padding: 32px 0;
   }
@@ -2469,30 +2647,38 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .why-dubai {
-    background:
-      linear-gradient(180deg, #ffffff 0 34%, #1e6f9b 34% 100%);
     padding: 32px 0 44px;
   }
 
   .why-dubai__card {
-    width: calc(100% - 24px);
+    width: 100%;
+    flex-direction: column-reverse;
+    filter: none;
+  }
+
+  .why-dubai__shape {
+    width: 100%;
+    min-height: 0;
+    margin-top: -10px;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .why-dubai__shape-content {
+    display: block;
     min-height: auto;
   }
 
-  .why-dubai__panel {
-    width: 100%;
-    min-height: 0;
-  }
-
-  .why-dubai__panel-content {
-    grid-template-columns: 1fr;
-    min-height: 0;
-    gap: 0;
-  }
-
   .why-dubai__copy {
-    order: 2;
-    padding: 28px 72px 32px 20px;
+    padding: 74px 10% 36px;
+  }
+
+  .why-dubai .sais-curved-panel__svg {
+    transform: rotate(-90deg);
+    transform-origin: center;
+    top: -14%;
+    width: 100%;
+    height: 100vw;
   }
 
   .why-dubai__title {
@@ -2519,12 +2705,16 @@ button[aria-label="Open Next.js Dev Tools"] {
     height: 58px;
   }
 
+  .why-dubai__media {
+    width: 100%;
+    padding: 0;
+    justify-content: center;
+  }
+
   .why-dubai__image-wrap {
-    order: 1;
-    justify-self: center;
-    width: calc(100% - 32px);
-    height: 290px;
-    margin: 18px 52px 0 0;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 18px;
   }
 
   .accreditations-section__inner {
@@ -2566,7 +2756,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .quick-links {
-    padding: 32px 0 42px;
+    padding: clamp(46px, 5.6vw, 66px) 0 clamp(54px, 6.4vw, 74px)
   }
 
   .quick-links__inner {
