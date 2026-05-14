@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Award, Globe2, Network, UsersRound } from "lucide-react";
+import { memo } from "react";
 import type { ComponentType } from "react";
 import { SaisCurvedPanel } from "@/components/ui/sais-curved-panel";
 import type { HomepageData, WhyDubaiItem } from "@/types/sanity";
@@ -18,7 +19,7 @@ const iconMap: Record<NonNullable<WhyDubaiItem["iconType"]>, ComponentType<{ siz
   family: UsersRound,
 };
 
-export function WhyDubaiMotion({ section }: WhyDubaiMotionProps) {
+export const WhyDubaiMotion = memo(function WhyDubaiMotion({ section }: WhyDubaiMotionProps) {
   const prefersReducedMotion = useReducedMotion();
   const title = section.heading?.title || "Why SAIS Dubai?";
   const subtitle = section.heading?.subtitle;
@@ -27,9 +28,9 @@ export function WhyDubaiMotion({ section }: WhyDubaiMotionProps) {
     <section className="why-dubai" aria-labelledby="why-dubai-title">
       <motion.div
         className="why-dubai__card"
-        initial={prefersReducedMotion ? false : { y: 46, opacity: 0, scale: 0.985 }}
-        whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1, scale: 1 }}
-        viewport={{ once: false, amount: 0.42 }}
+        initial={prefersReducedMotion ? false : { y: 24, opacity: 0 }}
+        whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.24 }}
         transition={{ duration: 0.82, ease: [0.16, 1, 0.3, 1] }}
       >
         <SaisCurvedPanel
@@ -45,7 +46,7 @@ export function WhyDubaiMotion({ section }: WhyDubaiMotionProps) {
               className="why-dubai__title"
               initial={prefersReducedMotion ? false : { y: 18, opacity: 0 }}
               whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-              viewport={{ once: false, amount: 0.5 }}
+              viewport={{ once: true, amount: 0.24 }}
               transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
             >
               {title}
@@ -56,7 +57,7 @@ export function WhyDubaiMotion({ section }: WhyDubaiMotionProps) {
                 className="why-dubai__subtitle"
                 initial={prefersReducedMotion ? false : { y: 18, opacity: 0 }}
                 whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.24 }}
                 transition={{ duration: 0.62, delay: 0.07, ease: [0.16, 1, 0.3, 1] }}
               >
                 {subtitle}
@@ -71,9 +72,9 @@ export function WhyDubaiMotion({ section }: WhyDubaiMotionProps) {
                   <motion.article
                     className="why-dubai__item"
                     key={`${item.description}-${index}`}
-                    initial={prefersReducedMotion ? false : { y: 24, opacity: 0 }}
+                    initial={prefersReducedMotion ? false : { y: 18, opacity: 0 }}
                     whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-                    viewport={{ once: false, amount: 0.45 }}
+                    viewport={{ once: true, amount: 0.18 }}
                     transition={{
                       duration: 0.62,
                       delay: prefersReducedMotion ? 0 : 0.16 + index * 0.08,
@@ -99,9 +100,9 @@ export function WhyDubaiMotion({ section }: WhyDubaiMotionProps) {
 
         <motion.div
           className="why-dubai__media"
-          initial={prefersReducedMotion ? false : { x: 64, opacity: 0, rotate: 1.5 }}
-          whileInView={prefersReducedMotion ? undefined : { x: 0, opacity: 1, rotate: 0 }}
-          viewport={{ once: false, amount: 0.38 }}
+          initial={prefersReducedMotion ? false : { x: 28, opacity: 0 }}
+          whileInView={prefersReducedMotion ? undefined : { x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.88, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="why-dubai__image-wrap">
@@ -122,4 +123,4 @@ export function WhyDubaiMotion({ section }: WhyDubaiMotionProps) {
       </motion.div>
     </section>
   );
-}
+});

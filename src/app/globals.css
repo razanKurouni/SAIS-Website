@@ -168,8 +168,8 @@ button[aria-label="Open Next.js Dev Tools"] {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.34) 0%, transparent 24%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.16), transparent 58%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, transparent 24%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.08), transparent 58%);
   pointer-events: none;
 }
 
@@ -751,6 +751,10 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .facts-section__heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
   margin: 0 0 24px;
 }
 
@@ -761,6 +765,18 @@ button[aria-label="Open Next.js Dev Tools"] {
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.02em;
+}
+
+.facts-section__brand {
+  position: relative;
+  width: clamp(128px, 16vw, 196px);
+  height: clamp(54px, 6vw, 82px);
+  flex: 0 0 auto;
+}
+
+.facts-section__brand-image {
+  object-fit: contain;
+  object-position: center;
 }
 
 .facts-section__grid {
@@ -3198,6 +3214,15 @@ button[aria-label="Open Next.js Dev Tools"] {
     width: calc(100% - 24px);
   }
 
+  .facts-section__heading {
+    align-items: flex-start;
+  }
+
+  .facts-section__brand {
+    width: 132px;
+    height: 58px;
+  }
+
   .facts-section__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px 0;
@@ -3582,5 +3607,402 @@ button[aria-label="Open Next.js Dev Tools"] {
   .site-footer__legal a + a {
     margin-left: 18px;
     padding-left: 18px;
+  }
+}
+
+@media (max-width: 540px) {
+  .site-header__inner,
+  .hero-contact-band__inner,
+  .intro-feature__image-shell,
+  .why-dubai__image-wrap,
+  .accreditations-section__inner,
+  .facts-section__inner,
+  .quick-links__inner,
+  .learning-phases__inner,
+  .tour-intro__inner,
+  .tour-actions__inner,
+  .latest-news__inner,
+  .social-feed__inner {
+    width: calc(100% - 16px);
+  }
+
+  .site-header__inner {
+    height: 76px;
+    padding: 0 10px 0 14px;
+    border-radius: 14px;
+  }
+
+  .site-header__logo {
+    width: min(176px, 56vw);
+  }
+
+  .site-header.is-scrolled .site-header__inner {
+    height: 68px;
+    padding: 0 10px 0 14px;
+    border-radius: 14px;
+  }
+
+  .site-header.is-scrolled .site-header__logo {
+    width: min(160px, 52vw);
+  }
+
+  .home-hero,
+  .home-hero__content {
+    min-height: 640px;
+  }
+
+  .home-hero__scroll-motion,
+  .home-hero__entry-motion {
+    width: min(100vw, 520px);
+  }
+
+  .home-hero__copy {
+    min-height: 184px;
+    padding: 24px 66px 24px 20px;
+  }
+
+  .home-hero__title {
+    font-size: clamp(1.04rem, 5.8vw, 1.42rem);
+    line-height: 1.22;
+  }
+
+  .home-hero__description {
+    margin-top: 14px;
+    font-size: 0.86rem;
+    line-height: 1.4;
+  }
+
+  .sais-menu-drawer__inner {
+    padding: 18px 14px 14px;
+  }
+
+  .sais-menu-drawer__actions {
+    grid-template-columns: 1fr 1fr 40px 40px;
+    gap: 8px;
+  }
+
+  .sais-menu-drawer__actions .header-action {
+    height: 42px;
+    padding: 0 5px 0 12px;
+    font-size: 0.8rem;
+  }
+
+  .sais-menu-drawer__actions .header-action__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .sais-menu-drawer__actions .header-icon-link,
+  .sais-menu-drawer__actions .sais-menu-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .sais-menu-search {
+    height: 46px;
+    padding-left: 14px;
+  }
+
+  .sais-menu-section__title {
+    font-size: 1.14rem;
+  }
+
+  .sais-menu-subitem {
+    font-size: 0.94rem;
+  }
+
+  .intro-feature {
+    padding: 22px 0 18px;
+  }
+
+  .intro-feature__shape {
+    margin-top: -10px;
+  }
+
+  .intro-feature__content {
+    padding: 56px 20px 28px;
+  }
+
+  .intro-feature__title {
+    font-size: 1.28rem;
+  }
+
+  .intro-feature__description {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .hero-contact-band {
+    padding: 24px 0;
+  }
+
+  .hero-contact-band__inner {
+    min-height: auto;
+    padding: 28px 14px;
+    border-radius: 10px;
+  }
+
+  .hero-contact-band__text {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .hero-contact-band__actions {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .hero-contact-band__button {
+    flex: 1 1 146px;
+    min-width: 0;
+    max-width: 166px;
+    height: 36px;
+    padding: 0 5px 0 14px;
+    font-size: 0.86rem;
+  }
+
+  .hero-contact-band__icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .accreditations-rail__track,
+  .facts-section__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .facts-section__heading {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .facts-section__brand {
+    width: 124px;
+    height: 52px;
+  }
+
+  .facts-section__grid {
+    gap: 22px;
+    padding: 28px 0;
+  }
+
+  .facts-section__item {
+    padding: 0;
+  }
+
+  .facts-section__value {
+    font-size: 2.35rem;
+  }
+
+  .facts-section__label {
+    font-size: 0.92rem;
+  }
+
+  .quick-links {
+    padding: 64px 0 60px;
+  }
+
+  .quick-links__title,
+  .learning-phases__title,
+  .tour-intro__title,
+  .latest-news__title,
+  .social-feed__title {
+    font-size: 1.22rem;
+  }
+
+  .quick-links-card {
+    min-height: 500px;
+  }
+
+  .quick-links-card__copy {
+    min-height: 224px;
+    padding: 24px 20px 20px;
+  }
+
+  .quick-links-card__title,
+  .learning-phase-card__title {
+    font-size: 1.16rem;
+  }
+
+  .quick-links-card__text,
+  .latest-news-card__text {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .quick-links-card__button,
+  .learning-phases__section-button,
+  .latest-news__section-button {
+    min-height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .quick-links-card__wave,
+  .quick-links-card__curve-mask {
+    top: 66px;
+    height: 350px;
+  }
+
+  .quick-links-card__image-wrap {
+    top: 220px;
+  }
+
+  .learning-phases__top,
+  .latest-news__top,
+  .social-feed__top {
+    gap: 14px;
+  }
+
+  .learning-phase-card__image {
+    height: 220px;
+  }
+
+  .learning-phase-card__body {
+    min-height: 176px;
+    padding: 22px 20px 24px;
+  }
+
+  .learning-phase-card__grades {
+    font-size: 0.9rem;
+  }
+
+  .tour-intro__subtitle {
+    margin-top: 20px;
+    font-size: 1.12rem;
+  }
+
+  .tour-intro__description {
+    margin-top: 18px;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .tour-actions__grid {
+    gap: 26px;
+  }
+
+  .tour-action-card {
+    min-height: 470px;
+  }
+
+  .tour-action-card__image {
+    top: -14px;
+    height: 236px;
+    border-radius: 20px;
+    clip-path: inset(0 round 20px);
+  }
+
+  .tour-action-card__panel {
+    min-height: 280px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .tour-action-card__panel-content {
+    min-height: 280px;
+    padding: 108px 24px 28px;
+  }
+
+  .tour-action-card__title {
+    font-size: 1.28rem;
+  }
+
+  .tour-action-card__button,
+  .approach-section__button {
+    min-width: 148px;
+    height: 40px;
+    font-size: 0.92rem;
+  }
+
+  .tour-action-card__arrow,
+  .approach-section__arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .approach-section__image-wrap {
+    height: 292px;
+  }
+
+  .approach-section__content {
+    padding: 32px 20px 32px;
+  }
+
+  .approach-section__lead {
+    font-size: 1.08rem;
+  }
+
+  .approach-section__paragraphs {
+    gap: 22px;
+    margin-top: 24px;
+  }
+
+  .approach-section__paragraphs p {
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  .latest-news-card__image-wrap,
+  .social-feed__image-wrap {
+    border-radius: 18px;
+  }
+
+  .latest-news-card__body {
+    min-height: 0;
+    padding-top: 20px;
+  }
+
+  .latest-news-card__title {
+    font-size: 1.12rem;
+  }
+
+  .social-feed__links {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .social-feed__link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .site-footer__shape,
+  .site-footer__brand-area {
+    height: 360px;
+    min-height: 360px;
+  }
+
+  .site-footer__brand-area {
+    padding: 28px 18px 30px;
+  }
+
+  .site-footer__logo {
+    width: min(280px, 90%);
+  }
+
+  .site-footer__contact {
+    margin-top: 28px;
+  }
+
+  .site-footer__right {
+    gap: 24px;
+    padding: 28px 18px 32px;
+  }
+
+  .site-footer__bottom-inner {
+    width: calc(100% - 32px);
+    min-height: 88px;
+  }
+
+  .site-footer__legal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-footer__legal a + a {
+    margin-left: 0;
+    padding-left: 0;
   }
 }

@@ -64,17 +64,17 @@ export function IntroFeatureSection({ section }: IntroFeatureSectionProps) {
     <section className="intro-feature" aria-labelledby="intro-feature-title">
       <motion.div
         className="intro-feature__layout"
-        initial={prefersReducedMotion ? false : { y: 46, opacity: 0, scale: 0.985 }}
-        whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1, scale: 1 }}
-        viewport={{ once: false, amount: 0.42 }}
-        transition={{ duration: 0.82, ease: [0.16, 1, 0.3, 1] }}
+        initial={prefersReducedMotion ? false : { y: 28, opacity: 0 }}
+        whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.18 }}
+        transition={{ duration: 0.86, ease: [0.16, 1, 0.3, 1] }}
       >
         <motion.div
           className="intro-feature__media"
-          initial={prefersReducedMotion ? false : { x: -64, opacity: 0, rotate: -1.5 }}
-          whileInView={prefersReducedMotion ? undefined : { x: 0, opacity: 1, rotate: 0 }}
-          viewport={{ once: false, amount: 0.38 }}
-          transition={{ duration: 0.88, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          initial={prefersReducedMotion ? false : { x: -28, opacity: 0 }}
+          whileInView={prefersReducedMotion ? undefined : { x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.18 }}
+          transition={{ duration: 0.84, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="intro-feature__image-shell">
             <Image
@@ -102,7 +102,7 @@ export function IntroFeatureSection({ section }: IntroFeatureSectionProps) {
               className="intro-feature__title"
               initial={prefersReducedMotion ? false : { y: 18, opacity: 0 }}
               whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-              viewport={{ once: false, amount: 0.5 }}
+              viewport={{ once: true, amount: 0.24 }}
               transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
             >
               {title}

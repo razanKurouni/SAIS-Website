@@ -1,41 +1,28 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
-import { useRef } from "react";
 
 type HomeHeroMotionPanelProps = {
   children: ReactNode;
 };
 
 export function HomeHeroMotionPanel({ children }: HomeHeroMotionPanelProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 74%", "end 8%"],
-  });
-
-  const scrollX = useTransform(scrollYProgress, [0, 0.28, 1], ["0%", "0%", "-116%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.72, 1], [1, 1, 0.12]);
-  const x = useSpring(scrollX, {
-    stiffness: 88,
-    damping: 24,
-    mass: 0.42,
-  });
 
   return (
     <motion.div
-      ref={containerRef}
       className="home-hero__scroll-motion"
-      style={prefersReducedMotion ? undefined : { x, opacity }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+      animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.82, ease: [0.16, 1, 0.3, 1] }}
     >
       <motion.div
         className="home-hero__entry-motion"
-        initial={prefersReducedMotion ? false : { x: "-118%", opacity: 0.4, filter: "blur(8px)" }}
-        animate={prefersReducedMotion ? undefined : { x: "0%", opacity: 1, filter: "blur(0px)" }}
+        initial={prefersReducedMotion ? false : { x: "-106%", opacity: 0.55 }}
+        animate={prefersReducedMotion ? undefined : { x: "0%", opacity: 1 }}
         transition={{
-          duration: 1.08,
+          duration: 1.02,
           ease: [0.16, 1, 0.3, 1],
         }}
       >

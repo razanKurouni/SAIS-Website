@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { memo } from "react";
 import { CmsImage } from "@/components/ui/cms-image";
 import { SaisCurvedPanel } from "@/components/ui/sais-curved-panel";
 import type { FeatureCard } from "@/types/sanity";
@@ -31,7 +32,7 @@ function ArrowBadge() {
   );
 }
 
-export function TourActionCards({ cards = [] }: TourActionCardsProps) {
+export const TourActionCards = memo(function TourActionCards({ cards = [] }: TourActionCardsProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -45,9 +46,9 @@ export function TourActionCards({ cards = [] }: TourActionCardsProps) {
           <motion.article
             key={`${title}-${index}`}
             className={`tour-action-card tour-action-card--${tone}`}
-            initial={prefersReducedMotion ? false : { y: 58, opacity: 0, scale: 0.96 }}
-            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1, scale: 1 }}
-            viewport={{ once: false, amount: 0.2 }}
+            initial={prefersReducedMotion ? false : { y: 24, opacity: 0 }}
+            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.16 }}
             transition={{
               duration: 0.82,
               delay: prefersReducedMotion ? 0 : index * 0.12,
@@ -88,4 +89,4 @@ export function TourActionCards({ cards = [] }: TourActionCardsProps) {
       })}
     </div>
   );
-}
+});

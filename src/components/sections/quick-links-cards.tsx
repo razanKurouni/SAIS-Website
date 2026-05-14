@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { memo } from "react";
 import type { FeatureCard } from "@/types/sanity";
 
 type QuickLinksCardsProps = {
@@ -44,7 +45,7 @@ function QuickLinksCurveMask() {
   );
 }
 
-export function QuickLinksCards({ cards = [] }: QuickLinksCardsProps) {
+export const QuickLinksCards = memo(function QuickLinksCards({ cards = [] }: QuickLinksCardsProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -57,9 +58,9 @@ export function QuickLinksCards({ cards = [] }: QuickLinksCardsProps) {
           <motion.article
             key={`${card.title}-${index}`}
             className={`quick-links-card quick-links-card--${theme}`}
-            initial={prefersReducedMotion ? false : { y: 52, opacity: 0, scale: 0.97 }}
-            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1, scale: 1 }}
-            viewport={{ once: false, amount: 0.22 }}
+            initial={prefersReducedMotion ? false : { y: 22, opacity: 0 }}
+            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.18 }}
             transition={{
               duration: 0.74,
               delay: prefersReducedMotion ? 0 : index * 0.08,
@@ -103,4 +104,4 @@ export function QuickLinksCards({ cards = [] }: QuickLinksCardsProps) {
       })}
     </div>
   );
-}
+});

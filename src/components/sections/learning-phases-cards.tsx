@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { memo } from "react";
 import { CmsImage } from "@/components/ui/cms-image";
 import type { FeatureCard } from "@/types/sanity";
 
@@ -21,7 +22,7 @@ function ArrowBadge() {
   );
 }
 
-export function LearningPhasesCards({ cards = [] }: LearningPhasesCardsProps) {
+export const LearningPhasesCards = memo(function LearningPhasesCards({ cards = [] }: LearningPhasesCardsProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -34,9 +35,9 @@ export function LearningPhasesCards({ cards = [] }: LearningPhasesCardsProps) {
           <motion.article
             key={`${card.title}-${index}`}
             className={`learning-phase-card learning-phase-card--${theme}`}
-            initial={prefersReducedMotion ? false : { y: 54, opacity: 0, rotateX: 6 }}
-            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1, rotateX: 0 }}
-            viewport={{ once: false, amount: 0.18 }}
+            initial={prefersReducedMotion ? false : { y: 22, opacity: 0 }}
+            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.16 }}
             transition={{
               duration: 0.72,
               delay: prefersReducedMotion ? 0 : index * 0.09,
@@ -70,4 +71,4 @@ export function LearningPhasesCards({ cards = [] }: LearningPhasesCardsProps) {
       })}
     </div>
   );
-}
+});

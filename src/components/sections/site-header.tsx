@@ -5,7 +5,9 @@ import Link from "next/link";
 import { ArrowRight, CircleUserRound, Facebook, Instagram, Search, Twitter, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useShallow } from "zustand/react/shallow";
 import { SaisWaveMark } from "@/components/ui/sais-wave-mark";
+import { useUiStore } from "@/store/ui-store";
 import type { Cta, HeaderSettings, LinkField } from "@/types/sanity";
 
 type SiteHeaderProps = {
@@ -39,9 +41,26 @@ const socialLinks = [
 ];
 
 export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const {
+    isMenuOpen,
+    searchQuery,
+    expandedSections,
+    toggleMenu,
+    closeMenu,
+    setSearchQuery,
+    toggleExpandedSection,
+  } = useUiStore(
+    useShallow((state) => ({
+      isMenuOpen: state.isMenuOpen,
+      searchQuery: state.searchQuery,
+      expandedSections: state.expandedSections,
+      toggleMenu: state.toggleMenu,
+      closeMenu: state.closeMenu,
+      setSearchQuery: state.setSearchQuery,
+      toggleExpandedSection: state.toggleExpandedSection,
+    })),
+  );
   const navLinks = useMemo(() => (links.length > 0 ? links : fallbackLinks), [links]);
   const logo = settings?.logo;
   const menuIcon = settings?.menuIcon;
@@ -51,9 +70,6 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
   const menuSections = useMemo(
     () => filterMenuSections(baseMenuSections, searchQuery),
     [baseMenuSections, searchQuery],
-  );
-  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(baseMenuSections.filter((section) => section.items?.length).map((section) => [section.title, true])),
   );
   const hasSearchQuery = searchQuery.trim().length > 0;
 
@@ -79,20 +95,6 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
     };
   }, []);
 
-  const handleMenuToggle = () => {
-    if (isMenuOpen) {
-      handleMenuClose();
-      return;
-    }
-
-    setIsMenuOpen(true);
-  };
-
-  const handleMenuClose = () => {
-    setIsMenuOpen(false);
-    setSearchQuery("");
-  };
-
   return (
     <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
       <div className="site-header__inner">
@@ -115,11 +117,11 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
           <HeaderAction cta={bookTourButton} fallbackLabel="Book a Tour" fallbackHref="#tour" />
           <HeaderAction cta={applyNowButton} fallbackLabel="Apply Now" fallbackHref="#apply" />
           <IconLink href="#portal" label="Parent portal" />
-          <MenuButton icon={menuIcon} isOpen={isMenuOpen} onClick={handleMenuToggle} />
+          <MenuButton icon={menuIcon} isOpen={isMenuOpen} onClick={toggleMenu} />
         </nav>
 
         <div className="site-header__mobile-actions">
-          <MenuButton icon={menuIcon} isOpen={isMenuOpen} onClick={handleMenuToggle} />
+          <MenuButton icon={menuIcon} isOpen={isMenuOpen} onClick={toggleMenu} />
         </div>
       </div>
 
@@ -137,7 +139,7 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
               type="button"
               aria-label="Close menu"
               className="sais-menu-panel__scrim"
-              onClick={handleMenuClose}
+              onClick={closeMenu}
             />
 
             <motion.aside
@@ -156,7 +158,7 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
                     <MenuButton
                       icon={menuIcon}
                       isOpen={isMenuOpen}
-                      onClick={handleMenuClose}
+                      onClick={closeMenu}
                     />
                   </div>
 
@@ -198,13 +200,7 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
                         <button
                           type="button"
                           className="sais-menu-section__head sais-menu-section__head--button"
-                          onClick={() =>
-                            !hasSearchQuery &&
-                            setExpandedSections((current) => ({
-                              ...current,
-                              [section.title]: !current[section.title],
-                            }))
-                          }
+                          onClick={() => !hasSearchQuery && toggleExpandedSection(section.title)}
                           aria-expanded={hasSearchQuery ? true : (expandedSections[section.title] ?? true)}
                         >
                           <span className="sais-menu-section__title">{section.title}</span>
@@ -222,7 +218,7 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
                         <Link
                           href={section.href || "#"}
                           className="sais-menu-section__title"
-                          onClick={handleMenuClose}
+                          onClick={closeMenu}
                         >
                           {section.title}
                         </Link>
@@ -244,7 +240,7 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
                                   key={`${section.title}-${item.label}`}
                                   href={item.href || "#"}
                                   className="sais-menu-subitem"
-                                  onClick={handleMenuClose}
+                                  onClick={closeMenu}
                                 >
                                   <MenuSubitemAccent />
                                   <span>{item.label}</span>

@@ -1,5 +1,9 @@
-import { TourActionCards } from "@/components/sections/tour-action-cards";
+import dynamic from "next/dynamic";
 import type { HomepageData } from "@/types/sanity";
+
+const TourActionCards = dynamic(
+  () => import("@/components/sections/tour-action-cards").then((module) => module.TourActionCards),
+);
 
 type TourSectionProps = {
   section?: HomepageData["tour"];

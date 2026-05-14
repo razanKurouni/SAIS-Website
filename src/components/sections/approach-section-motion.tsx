@@ -46,10 +46,10 @@ export function ApproachSectionMotion({
       {image?.url && (
         <motion.div
           className="approach-section__image-wrap"
-          initial={prefersReducedMotion ? false : { opacity: 0, scale: 1.04, x: 80 }}
-          whileInView={prefersReducedMotion ? undefined : { opacity: 1, scale: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.35 }}
-          transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
+          initial={prefersReducedMotion ? false : { opacity: 0, x: 28 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.18 }}
+          transition={{ duration: 0.88, ease: [0.16, 1, 0.3, 1] }}
         >
           <Image
             src={image.url}
@@ -64,9 +64,9 @@ export function ApproachSectionMotion({
 
       <motion.div
         className="approach-section__panel"
-        initial={prefersReducedMotion ? false : { x: "-10%", opacity: 0 }}
+        initial={prefersReducedMotion ? false : { x: -24, opacity: 0 }}
         whileInView={prefersReducedMotion ? undefined : { x: 0, opacity: 1 }}
-        viewport={{ once: false, amount: 0.35 }}
+        viewport={{ once: true, amount: 0.18 }}
         transition={{ duration: 0.86, ease: [0.16, 1, 0.3, 1] }}
       >
         <svg
@@ -93,9 +93,9 @@ export function ApproachSectionMotion({
           {lead && (
             <motion.p
               className="approach-section__lead"
-              initial={prefersReducedMotion ? false : { y: 24, opacity: 0, filter: "blur(8px)" }}
-              whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1, filter: "blur(0px)" }}
-              viewport={{ once: false, amount: 0.5 }}
+              initial={prefersReducedMotion ? false : { y: 24, opacity: 0 }}
+              whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.24 }}
               transition={{ duration: 0.74, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
             >
               {lead}
@@ -108,7 +108,7 @@ export function ApproachSectionMotion({
                 key={paragraph}
                 initial={prefersReducedMotion ? false : { y: 28, opacity: 0 }}
                 whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.22 }}
                 transition={{
                   duration: 0.72,
                   delay: prefersReducedMotion ? 0 : 0.2 + index * 0.1,
@@ -124,7 +124,7 @@ export function ApproachSectionMotion({
             <motion.div
               initial={prefersReducedMotion ? false : { y: 20, opacity: 0 }}
               whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-              viewport={{ once: false, amount: 0.4 }}
+              viewport={{ once: true, amount: 0.22 }}
               transition={{ duration: 0.7, delay: 0.44, ease: [0.16, 1, 0.3, 1] }}
             >
               <Link

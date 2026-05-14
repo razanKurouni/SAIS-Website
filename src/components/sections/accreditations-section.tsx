@@ -1,6 +1,10 @@
-import { AccreditationsLogoRail } from "@/components/sections/accreditations-logo-rail";
+import dynamic from "next/dynamic";
 import { SectionReveal } from "@/components/ui/section-reveal";
 import type { HomepageData } from "@/types/sanity";
+
+const AccreditationsLogoRail = dynamic(
+  () => import("@/components/sections/accreditations-logo-rail").then((module) => module.AccreditationsLogoRail),
+);
 
 type AccreditationsSectionProps = {
   section?: HomepageData["accreditations"];

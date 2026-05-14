@@ -1,7 +1,11 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { SectionReveal } from "@/components/ui/section-reveal";
-import { LearningPhasesCards } from "@/components/sections/learning-phases-cards";
 import type { HomepageData } from "@/types/sanity";
+
+const LearningPhasesCards = dynamic(
+  () => import("@/components/sections/learning-phases-cards").then((module) => module.LearningPhasesCards),
+);
 
 type LearningPhasesSectionProps = {
   section?: HomepageData["learningPhases"];

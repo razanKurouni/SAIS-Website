@@ -1,5 +1,9 @@
-import { QuickLinksCards } from "@/components/sections/quick-links-cards";
+import dynamic from "next/dynamic";
 import type { HomepageData } from "@/types/sanity";
+
+const QuickLinksCards = dynamic(
+  () => import("@/components/sections/quick-links-cards").then((module) => module.QuickLinksCards),
+);
 
 type QuickLinksSectionProps = {
   section?: HomepageData["quickLinks"];

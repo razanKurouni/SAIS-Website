@@ -8,6 +8,7 @@ type CmsImageProps = {
   imageClassName?: string;
   priority?: boolean;
   sizes?: string;
+  quality?: number;
   fallbackLabel?: string;
 };
 
@@ -18,6 +19,7 @@ export function CmsImage({
   imageClassName = "object-cover",
   priority = false,
   sizes = "(max-width: 768px) 100vw, 50vw",
+  quality = 80,
   fallbackLabel = "Image",
 }: CmsImageProps) {
   return (
@@ -28,6 +30,8 @@ export function CmsImage({
           alt={image.alt || alt || fallbackLabel}
           fill
           sizes={sizes}
+          quality={quality}
+          loading={priority ? "eager" : "lazy"}
           className={imageClassName}
           priority={priority}
         />

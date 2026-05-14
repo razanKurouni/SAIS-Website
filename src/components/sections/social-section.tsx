@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { CmsImage } from "@/components/ui/cms-image";
@@ -11,7 +12,7 @@ type SocialSectionProps = {
 
 const icons = [Instagram, Facebook, Twitter];
 
-export function SocialSection({ section }: SocialSectionProps) {
+export const SocialSection = memo(function SocialSection({ section }: SocialSectionProps) {
   const prefersReducedMotion = useReducedMotion();
 
   if (!section) {
@@ -50,8 +51,8 @@ export function SocialSection({ section }: SocialSectionProps) {
             <motion.div
               key={`${image.url || "social"}-${index}`}
               className="social-feed__item"
-              initial={prefersReducedMotion ? false : { y: 42, opacity: 0, scale: 0.97 }}
-              whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1, scale: 1 }}
+              initial={prefersReducedMotion ? false : { y: 20, opacity: 0 }}
+              whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{
                 duration: 0.72,
@@ -72,4 +73,4 @@ export function SocialSection({ section }: SocialSectionProps) {
       </div>
     </section>
   );
-}
+});

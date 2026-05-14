@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { SiteHeader } from "@/components/sections/site-header";
 import { HomeHero } from "@/components/sections/home-hero";
 import { IntroFeatureSection } from "@/components/sections/intro-feature-section";
@@ -11,9 +12,12 @@ import { TourIntroSection } from "@/components/sections/tour-intro-section";
 import { TourSection } from "@/components/sections/tour-section";
 import { ApproachSection } from "@/components/sections/approach-section";
 import { LatestNewsSection } from "@/components/sections/latest-news-section";
-import { SocialSection } from "@/components/sections/social-section";
 import { SiteFooter } from "@/components/sections/site-footer";
 import type { HomepageData } from "@/types/sanity";
+
+const SocialSection = dynamic(
+  () => import("@/components/sections/social-section").then((module) => module.SocialSection),
+);
 
 type HomePageProps = {
   data?: HomepageData;

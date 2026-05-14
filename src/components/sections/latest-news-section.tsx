@@ -1,5 +1,9 @@
-import { LatestNewsCards } from "@/components/sections/latest-news-cards";
+import dynamic from "next/dynamic";
 import type { HomepageData } from "@/types/sanity";
+
+const LatestNewsCards = dynamic(
+  () => import("@/components/sections/latest-news-cards").then((module) => module.LatestNewsCards),
+);
 
 type LatestNewsSectionProps = {
   section?: HomepageData["news"];

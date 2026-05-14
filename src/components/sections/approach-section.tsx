@@ -1,6 +1,10 @@
-import { ApproachSectionMotion } from "@/components/sections/approach-section-motion";
+import dynamic from "next/dynamic";
 import { richTextToParagraphs } from "@/lib/content";
 import type { HomepageData } from "@/types/sanity";
+
+const ApproachSectionMotion = dynamic(
+  () => import("@/components/sections/approach-section-motion").then((module) => module.ApproachSectionMotion),
+);
 
 type ApproachSectionProps = {
   section?: HomepageData["whySection"];

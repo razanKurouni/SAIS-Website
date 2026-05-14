@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { memo } from "react";
 import type { FeatureCard } from "@/types/sanity";
 
 type LatestNewsCardsProps = {
@@ -26,7 +27,7 @@ function NewsArrow() {
   );
 }
 
-export function LatestNewsCards({ posts = [] }: LatestNewsCardsProps) {
+export const LatestNewsCards = memo(function LatestNewsCards({ posts = [] }: LatestNewsCardsProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -38,9 +39,9 @@ export function LatestNewsCards({ posts = [] }: LatestNewsCardsProps) {
           <motion.article
             key={`${post.title}-${index}`}
             className="latest-news-card"
-            initial={prefersReducedMotion ? false : { y: 46, opacity: 0, scale: 0.985 }}
-            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1, scale: 1 }}
-            viewport={{ once: false, amount: 0.2 }}
+            initial={prefersReducedMotion ? false : { y: 20, opacity: 0 }}
+            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.16 }}
             transition={{
               duration: 0.72,
               delay: prefersReducedMotion ? 0 : index * 0.09,
@@ -81,4 +82,4 @@ export function LatestNewsCards({ posts = [] }: LatestNewsCardsProps) {
       })}
     </div>
   );
-}
+});

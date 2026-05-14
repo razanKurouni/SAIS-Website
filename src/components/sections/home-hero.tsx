@@ -44,7 +44,7 @@ export function HomeHero({ hero }: HomeHeroProps) {
         <HomeHeroMotionPanel>
           <SaisCurvedPanel
             className="home-hero__copy"
-            fillColor="#1e6f9b"
+            fillColor="rgba(30, 111, 155, 0.72)"
             accentColor="#31b2b6"
             strokeWidth={88}
           >
