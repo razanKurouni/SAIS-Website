@@ -141,7 +141,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .sais-curved-panel.is-flipped .sais-curved-panel__svg {
-  transform: scaleX(-1);
+  transform: rotateZ(180deg);
 }
 
 .sais-curved-panel__shape {
@@ -751,10 +751,6 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .facts-section__heading {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
   margin: 0 0 24px;
 }
 
@@ -765,18 +761,6 @@ button[aria-label="Open Next.js Dev Tools"] {
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.02em;
-}
-
-.facts-section__brand {
-  position: relative;
-  width: clamp(128px, 16vw, 196px);
-  height: clamp(54px, 6vw, 82px);
-  flex: 0 0 auto;
-}
-
-.facts-section__brand-image {
-  object-fit: contain;
-  object-position: center;
 }
 
 .facts-section__grid {
@@ -3037,8 +3021,8 @@ button[aria-label="Open Next.js Dev Tools"] {
     overflow: visible;
   }
   .sais-curved-panel.is-flipped .sais-curved-panel__svg {
-  transform: scaleX(-2);
-}
+    transform: rotateZ(180deg);
+  }
 
   .intro-feature__shape-content {
     display: block;
@@ -3212,15 +3196,6 @@ button[aria-label="Open Next.js Dev Tools"] {
 
   .facts-section__inner {
     width: calc(100% - 24px);
-  }
-
-  .facts-section__heading {
-    align-items: flex-start;
-  }
-
-  .facts-section__brand {
-    width: 132px;
-    height: 58px;
   }
 
   .facts-section__grid {
@@ -3769,17 +3744,6 @@ button[aria-label="Open Next.js Dev Tools"] {
   .accreditations-rail__track,
   .facts-section__grid {
     grid-template-columns: 1fr;
-  }
-
-  .facts-section__heading {
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-
-  .facts-section__brand {
-    width: 124px;
-    height: 52px;
   }
 
   .facts-section__grid {

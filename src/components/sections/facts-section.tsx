@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useInView, useReducedMotion } from "framer-motion";
 import { SectionReveal } from "@/components/ui/section-reveal";
@@ -9,8 +8,6 @@ import type { HomepageData } from "@/types/sanity";
 type FactsSectionProps = {
   section?: HomepageData["facts"];
 };
-
-const KNOWLEDGE_LOGO = "/dubai-knowledge-logo.png";
 
 function parseMetricValue(value: string) {
   const trimmed = value.trim();
@@ -101,21 +98,9 @@ export function FactsSection({ section }: FactsSectionProps) {
       <SectionReveal className="facts-section__inner">
         {section.heading?.title ? (
           <div className="facts-section__heading">
-            <div>
-              <h2 id="facts-title" className="facts-section__title">
-                {section.heading.title}
-              </h2>
-            </div>
-
-            <div className="facts-section__brand" aria-hidden="true">
-              <Image
-                src={KNOWLEDGE_LOGO}
-                alt=""
-                fill
-                sizes="(max-width: 767px) 140px, 190px"
-                className="facts-section__brand-image"
-              />
-            </div>
+            <h2 id="facts-title" className="facts-section__title">
+              {section.heading.title}
+            </h2>
           </div>
         ) : null}
 
