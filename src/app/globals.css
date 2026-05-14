@@ -1,10 +1,58 @@
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/axiforma/axiforma-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/axiforma/axiforma-book.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/axiforma/axiforma-regular.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/axiforma/axiforma-semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/axiforma/axiforma-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/axiforma/axiforma-black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #e9eaec;
   --foreground: #0d2f4a;
   --primary: #1e6f9b;
   --accent: #31b2b6;
-  --font-display: "Sora", "Avenir Next", "Segoe UI", sans-serif;
-  --font-body: "Source Sans 3", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Axiforma", sans-serif;
+  --font-body: "Axiforma", sans-serif;
 }
 
 * {
@@ -21,7 +69,7 @@ body {
 }
 
 body {
-  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   min-height: 100vh;
 }
 
@@ -31,7 +79,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display), "Segoe UI", sans-serif;
+  font-family: var(--font-display);
 }
 
 a {
@@ -383,17 +431,17 @@ button[aria-label="Open Next.js Dev Tools"] {
   --contact-action-color: #1e6f9b;
 
   display: inline-flex;
-  min-width: 104px;
-  height: 28px;
+  min-width: 146px;
+  height: 42px;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   border-radius: 999px;
   background: #ffffff;
   color: var(--contact-action-color);
-  padding: 0 4px 0 15px;
-  font-size: 0.78rem;
-  font-weight: 500;
+  padding: 0 6px 0 18px;
+  font-size: 0.98rem;
+  font-weight: 600;
   line-height: 1;
   transition:
     transform 250ms ease,
@@ -417,8 +465,8 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .hero-contact-band__icon {
   display: grid;
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   place-items: center;
   border-radius: 50%;
   background: var(--contact-action-color);
@@ -949,7 +997,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .quick-links-card__image {
   object-fit: cover;
-  object-position: center;
+  object-position: top center;
   transition:
     filter 540ms ease,
     transform 840ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -1194,37 +1242,37 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .tour-actions {
   background: #ffffff;
-  padding: 86px 0 clamp(82px, 9vw, 124px);
+  padding: 20px 0 clamp(82px, 9vw, 124px);
   color: #ffffff;
 }
 
 .tour-actions__inner {
   width: 80%;
-  max-width: 100%;
+  max-width: 1420px;
   margin: 0 auto;
 }
 
 .tour-actions__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(40px, 0vw, 126px);
+  gap: clamp(34px, 3vw, 92px);
   align-items: start;
 }
 
 .tour-action-card {
   position: relative;
-  min-height: clamp(470px, 37vw, 650px);
+  min-height: clamp(420px, 32vw, 560px);
   isolation: isolate;
   padding-top: clamp(18px, 2.2vw, 34px);
 }
 
 .tour-action-card__image {
   position: absolute;
-  top: calc(-3 * clamp(18px, 2.2vw, 34px));
+  top: calc(-3 * clamp(7px, 0.2vw, 34px));
   left: 0;
   z-index: 2;
-  width: min(82%, 690px);
-  height: clamp(300px, 25vw, 430px);
+  width: min(78%, 610px);
+  height: clamp(250px, 21vw, 360px);
   border-radius: 28px;
   background: #dfe8eb;
   box-shadow: 0 20px 45px rgba(11, 47, 70, 0.12);
@@ -1247,8 +1295,8 @@ button[aria-label="Open Next.js Dev Tools"] {
   right: 0;
   bottom: 0;
   z-index: 1;
-  width: 86%;
-  min-height: clamp(300px, 25vw, 410px);
+  width: 82%;
+  min-height: clamp(250px, 21vw, 350px);
   border-radius: 0 0 28px 28px;
 }
 
@@ -1256,10 +1304,10 @@ button[aria-label="Open Next.js Dev Tools"] {
   position: relative;
   z-index: 3;
   display: flex;
-  min-height: clamp(300px, 25vw, 410px);
+  min-height: clamp(250px, 21vw, 350px);
   flex-direction: column;
   justify-content: flex-start;
-  padding: clamp(154px, 13.6vw, 206px) clamp(92px, 10vw, 150px) clamp(46px, 5vw, 76px) clamp(56px, 5vw, 76px);
+  padding: clamp(126px, 11vw, 172px) clamp(72px, 8vw, 110px) clamp(34px, 4vw, 54px) clamp(42px, 4vw, 56px);
 }
 
 .tour-action-card__title {
@@ -1267,7 +1315,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   z-index: 4;
   margin: 0;
   color: #ffffff;
-  font-size: clamp(1.72rem, 2.45vw, 2.45rem);
+  font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.025em;
@@ -1279,18 +1327,18 @@ button[aria-label="Open Next.js Dev Tools"] {
 
   display: inline-flex;
   width: fit-content;
-  min-width: 190px;
-  height: 58px;
+  min-width: 148px;
+  height: 40px;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-top: clamp(34px, 4vw, 54px);
+  margin-top: clamp(24px, 2.8vw, 34px);
   border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 999px;
   background: #ffffff;
   color: var(--tour-action-color);
-  padding: 0 6px 0 18px;
-  font-size: clamp(1.15rem, 1.8vw, 1.75rem);
+  padding: 0 6px 0 16px;
+  font-size: clamp(0.94rem, 1.12vw, 1.04rem);
   font-weight: 400;
   line-height: 1;
   transition:
@@ -1315,8 +1363,8 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .tour-action-card__arrow {
   display: grid;
-  width: 44px;
-  height: 44px;
+  width: 28px;
+  height: 28px;
   place-items: center;
   border-radius: 50%;
   background: var(--tour-action-color);
@@ -1328,8 +1376,8 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .tour-action-card__arrow svg {
-  width: 26px;
-  height: 26px;
+  width: 18px;
+  height: 18px;
 }
 
 .tour-action-card__button:hover .tour-action-card__arrow {
@@ -1678,33 +1726,64 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .social-feed__link {
+  position: relative;
   display: grid;
   width: 46px;
   height: 46px;
   place-items: center;
+  overflow: hidden;
+  isolation: isolate;
   border: 1.5px solid #31b2b6;
   border-radius: 999px;
   background: #ffffff;
   color: #1e6f9b;
   text-decoration: none;
   transition:
-    background 260ms ease,
     border-color 260ms ease,
     color 260ms ease,
-    box-shadow 320ms ease;
+    box-shadow 320ms ease,
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-feed__link::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  z-index: 0;
+  border-radius: 999px;
+  background: #31b2b6;
+  transform: scale(0);
+  opacity: 0;
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 320ms ease;
 }
 
 .social-feed__link:hover {
-  border-color: #1e6f9b;
-  background: #31b2b6;
+  border-color: transparent;
   color: #ffffff;
-  box-shadow: 0 14px 28px rgba(30, 111, 155, 0.16);
+  box-shadow: none;
+  transform: translateY(-3px) scale(1.08);
+}
+
+.social-feed__link:hover::before,
+.social-feed__link:focus-visible::before {
+  transform: scale(1.5);
+  opacity: 1;
 }
 
 .social-feed__link svg {
+  position: relative;
+  z-index: 1;
   width: 21px;
   height: 21px;
   stroke-width: 2.4;
+  transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-feed__link:hover svg,
+.social-feed__link:focus-visible svg {
+  transform: scale(1.12);
 }
 
 .social-feed__grid {
@@ -1859,32 +1938,64 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .site-footer__social-link {
+  position: relative;
   display: grid;
   width: 46px;
   height: 46px;
   place-items: center;
+  overflow: hidden;
+  isolation: isolate;
   border: 1.5px solid #31b2b6;
   border-radius: 999px;
+  background: #ffffff;
   color: #1e6f9b;
   text-decoration: none;
   transition:
-    background 260ms ease,
+    border-color 260ms ease,
     color 260ms ease,
     transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 320ms ease;
 }
 
-.site-footer__social-link:hover {
+.site-footer__social-link::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  z-index: 0;
+  border-radius: 999px;
   background: #31b2b6;
+  transform: scale(0);
+  opacity: 0;
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 320ms ease;
+}
+
+.site-footer__social-link:hover {
+  border-color: transparent;
   color: #ffffff;
-  box-shadow: 0 14px 28px rgba(30, 111, 155, 0.14);
-  transform: translateY(-3px);
+  box-shadow: none;
+  transform: translateY(-3px) scale(1.08);
+}
+
+.site-footer__social-link:hover::before,
+.site-footer__social-link:focus-visible::before {
+  transform: scale(1.5);
+  opacity: 1;
 }
 
 .site-footer__social-link svg {
+  position: relative;
+  z-index: 1;
   width: 21px;
   height: 21px;
   stroke-width: 2.4;
+  transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-footer__social-link:hover svg,
+.site-footer__social-link:focus-visible svg {
+  transform: scale(1.12);
 }
 
 .site-footer__nav {
@@ -2117,27 +2228,6 @@ button[aria-label="Open Next.js Dev Tools"] {
   transform: scale(0.95);
 }
 
-.sais-menu-panel__inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 112px 20px 32px;
-}
-
-.sais-menu-panel__links {
-  display: grid;
-  gap: 16px;
-}
-
-.sais-menu-panel__actions {
-  display: grid;
-  gap: 12px;
-  padding-top: 40px;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -2256,56 +2346,279 @@ button[aria-label="Open Next.js Dev Tools"] {
   pointer-events: none;
   position: fixed;
   inset: 0;
-  z-index: 10;
+  z-index: 90;
   opacity: 0;
-  background:
-    radial-gradient(circle at 80% 12%, rgba(49, 178, 182, 0.24), transparent 26%),
-    radial-gradient(circle at 16% 82%, rgba(38, 127, 168, 0.18), transparent 28%),
-    rgba(6, 13, 14, 0.94);
-  backdrop-filter: blur(24px);
-  transform: translateY(-18px) scale(0.985);
-  transition:
-    opacity 380ms ease,
-    transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: rgba(4, 11, 16, 0.34);
+  backdrop-filter: blur(10px);
+  transition: opacity 320ms ease;
 }
 
 .sais-menu-panel.is-open {
   pointer-events: auto;
   opacity: 1;
-  transform: translateY(0) scale(1);
 }
 
-.sais-menu-link {
-  --item-index: 0;
+.sais-menu-panel__scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.44) 0%,
+      rgba(0, 0, 0, 0.18) 32%,
+      rgba(0, 0, 0, 0.04) 56%,
+      rgba(0, 0, 0, 0) 70%
+    );
+}
+
+.sais-menu-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(43vw, 760px);
+  min-width: 420px;
+  height: 100vh;
+  overflow: hidden;
+  background: #1e6f9b;
+  box-shadow: -30px 0 70px rgba(2, 9, 14, 0.28);
+}
+
+.sais-menu-drawer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.sais-menu-drawer__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(28px, 2.5vw, 42px) clamp(20px, 2.1vw, 34px) 18px;
+}
+
+.sais-menu-drawer__top {
+  display: grid;
+  gap: 18px;
+  padding-bottom: 22px;
+}
+
+.sais-menu-drawer__actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 42px 42px;
+  align-items: center;
+  gap: 10px;
+}
+
+.sais-menu-drawer__actions .header-action {
+  min-width: 0;
+  height: 44px;
+  padding: 0 6px 0 15px;
+  font-size: 0.84rem;
+  box-shadow: none;
+}
+
+.sais-menu-drawer__actions .header-action__icon {
+  width: 30px;
+  height: 30px;
+}
+
+.sais-menu-drawer__actions .header-icon-link,
+.sais-menu-drawer__actions .sais-menu-button {
+  width: 42px;
+  height: 42px;
+  box-shadow: none;
+}
+
+.sais-menu-drawer__actions .sais-menu-button,
+.sais-menu-drawer__actions .sais-menu-button.is-open {
+  border-color: transparent;
+  background: transparent;
+  color: #31b2b6;
+}
+
+.sais-menu-drawer__actions .sais-menu-button:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.sais-menu-drawer__actions .sais-menu-button__close {
+  color: #31b2b6;
+}
+
+.sais-menu-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  padding: 0 8px 0 18px;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.sais-menu-search input {
+  flex: 1;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #1e6f9b;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.sais-menu-search input::placeholder {
+  color: #1e6f9b;
+  opacity: 0.78;
+}
+
+.sais-menu-search input:focus {
+  outline: none;
+}
+
+.sais-menu-search__icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: #8a8a8a;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.sais-menu-drawer__sections {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.sais-menu-drawer__sections::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sais-menu-drawer__sections::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sais-menu-section {
+  border-top: 1px solid rgba(49, 178, 182, 0.72);
+  padding: 24px 0 18px;
+}
+
+.sais-menu-section__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  gap: 16px;
+}
+
+.sais-menu-section__head--button {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.sais-menu-section__title {
   color: #ffffff;
-  font-size: clamp(2.1rem, 5vw, 5.8rem);
-  font-weight: 600;
-  line-height: 0.95;
-  letter-spacing: 0;
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    color 250ms ease,
-    border-color 250ms ease,
-    transform 350ms ease,
-    opacity 350ms ease;
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.1;
 }
 
-.sais-menu-panel.is-open .sais-menu-link {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: calc(var(--item-index) * 65ms);
+.sais-menu-section__toggle {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #fcfbf9;
 }
 
-.sais-menu-link:hover {
-  border-color: rgba(49, 178, 182, 0.55);
+.sais-menu-section__toggle svg {
+  width: 24px;
+  height: 10px;
+}
+
+.sais-menu-section__items {
+  overflow: hidden;
+  display: block;
+  padding-top: 0;
+}
+
+.sais-menu-section__items-inner {
+  display: grid;
+  gap: 12px;
+  padding-top: 18px;
+}
+
+.sais-menu-subitem {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
   color: #31b2b6;
+  font-size: clamp(1rem, 0.85rem + 0.6vw, 1.22rem);
+  font-weight: 500;
+  line-height: 1.28;
+  transition:
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.sais-menu-subitem svg {
+  width: 26px;
+  height: 8px;
+  margin-top: 0.42em;
+  flex: 0 0 auto;
+  color: #ffffff;
+}
+
+.sais-menu-subitem:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.sais-menu-drawer__footer {
+  padding-top: 18px;
+}
+
+.sais-menu-drawer__socials {
+  display: flex;
+  gap: 10px;
+}
+
+.sais-menu-social {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  border: 1px solid rgba(49, 178, 182, 0.82);
+  border-radius: 50%;
+  color: #ffffff;
+  transition:
+    background-color 240ms ease,
+    color 240ms ease,
+    border-color 240ms ease,
+    transform 260ms ease;
+}
+
+.sais-menu-social:hover {
+  border-color: transparent;
+  background: #31b2b6;
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.04);
 }
 
 @keyframes sais-wave-pulse {
@@ -2325,10 +2638,11 @@ button[aria-label="Open Next.js Dev Tools"] {
     transform: translateY(0) scaleY(1);
   }
 }
-
-@media (min-width: 640px) {
-  .sais-menu-panel__actions {
-    max-width: 384px;
+@media (min-width: 1525px) {
+  .why-dubai__image-wrap{
+      height: 540px;
+      width: 100%;
+    
   }
 }
 
@@ -2341,11 +2655,6 @@ button[aria-label="Open Next.js Dev Tools"] {
   .site-header__inner {
     padding-right: 0;
     padding-left: 0;
-  }
-
-  .sais-menu-panel__inner {
-    padding-right: 32px;
-    padding-left: 32px;
   }
 }
 
@@ -2395,6 +2704,11 @@ button[aria-label="Open Next.js Dev Tools"] {
 
   .why-dubai__copy {
     padding: 34px 22% 34px 8%;
+  }
+
+  .sais-menu-drawer {
+    width: min(48vw, 680px);
+    min-width: 380px;
   }
 
   .why-dubai__items {
@@ -2552,7 +2866,7 @@ button[aria-label="Open Next.js Dev Tools"] {
     min-height: 720px;
     max-width: 100%;
     padding-right: 0;
-    padding-bottom: 32px;
+    padding-bottom: 24px;
     padding-left: 0;
   }
 
@@ -2562,19 +2876,121 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .home-hero__copy {
-
+    left: 0;
     min-height: 210px;
-    padding: 30px 96px 30px 30px;
+    padding: 28px 84px 28px 24px;
   }
 
   .home-hero__title {
     font-size: clamp(1.16rem, 5.2vw, 1.68rem);
+    line-height: 1.28;
+  }
+
+  .home-hero__description {
+    margin-top: 18px;
+    font-size: 0.92rem;
+    line-height: 1.45;
   }
 
   .site-header__inner,
   .hero-contact-band__inner {
     width: calc(100% - 24px);
     max-width: none;
+  }
+
+  .site-header__inner {
+    height: 84px;
+    border-radius: 16px;
+  }
+
+  .site-header__logo {
+    width: min(208px, 58vw);
+  }
+
+  .site-header.is-scrolled {
+    padding-top: 8px;
+  }
+
+  .site-header.is-scrolled .site-header__inner {
+    height: 74px;
+    padding: 0 12px 0 16px;
+    border-radius: 16px;
+  }
+
+  .site-header.is-scrolled .site-header__logo {
+    width: min(186px, 52vw);
+  }
+
+  .sais-menu-panel__scrim {
+    background: rgba(4, 11, 16, 0.22);
+  }
+
+  .sais-menu-drawer {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .sais-menu-drawer__inner {
+    padding: 22px 18px 16px;
+  }
+
+  .sais-menu-drawer__actions {
+    grid-template-columns: 1fr 1fr 44px 44px;
+    gap: 10px;
+  }
+
+  .sais-menu-drawer__actions .header-action {
+    height: 46px;
+    padding: 0 6px 0 14px;
+    font-size: 0.88rem;
+  }
+
+  .sais-menu-drawer__actions .header-action__icon,
+  .sais-menu-search__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .sais-menu-drawer__actions .header-icon-link,
+  .sais-menu-drawer__actions .sais-menu-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .sais-menu-search {
+    height: 50px;
+    padding-left: 16px;
+  }
+
+  .sais-menu-search input {
+    font-size: 0.95rem;
+  }
+
+  .sais-menu-section {
+    padding: 20px 0 16px;
+  }
+
+  .sais-menu-section__toggle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .sais-menu-subitem {
+    font-size: 1rem;
+  }
+
+  .sais-menu-drawer__socials {
+    justify-content: flex-start;
+  }
+
+  .sais-menu-social {
+    width: 56px;
+    height: 56px;
+  }
+
+  .sais-menu-button {
+    width: 48px;
+    height: 42px;
   }
 
   .intro-feature {
@@ -2592,18 +3008,21 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .intro-feature__image-shell {
-    width: 80%;
+    width: calc(100% - 24px);
     margin: 0 auto;
     border-radius: 18px;
   }
 
   .intro-feature__shape {
     width: 100%;
-    min-height: auto;
-    margin-top: -10px;
+    min-height: 0;
+    margin-top: -14px;
     border-radius: 0;
     overflow: visible;
   }
+  .sais-curved-panel.is-flipped .sais-curved-panel__svg {
+  transform: scaleX(-2);
+}
 
   .intro-feature__shape-content {
     display: block;
@@ -2611,15 +3030,15 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .intro-feature__content {
-    padding: 74px 10% 42px;
+    padding: 66px 24px 36px;
   }
 
   .intro-feature .sais-curved-panel__svg {
     transform: rotate(-90deg);
     transform-origin: center;
-    top: -14%;
+    top: -11%;
     width: 100%;
-    height: 100vw;
+    height: 100vh;
   }
 
   .intro-feature__title {
@@ -2646,8 +3065,34 @@ button[aria-label="Open Next.js Dev Tools"] {
     gap: 12px;
   }
 
+  .hero-contact-band__button {
+    min-width: 132px;
+    height: 38px;
+    padding: 0 5px 0 16px;
+    font-size: 0.9rem;
+  }
+
+  .hero-contact-band__icon {
+    width: 28px;
+    height: 28px;
+  }
+
   .why-dubai {
-    padding: 32px 0 44px;
+    position: relative;
+    background: linear-gradient(180deg, #31b2b6 0 calc(100% - 28px), #1e6f9b calc(100% - 28px) 100%);
+    padding: 32px 0 52px;
+  }
+
+  .why-dubai::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -28px;
+    left: 0;
+    z-index: 3;
+    height: 46px;
+    background: url("/group-240-separator-horizontal.svg") center / 100% 100% no-repeat;
+    pointer-events: none;
   }
 
   .why-dubai__card {
@@ -2670,15 +3115,23 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .why-dubai__copy {
-    padding: 74px 10% 36px;
+    padding: 66px 24px 34px;
   }
 
   .why-dubai .sais-curved-panel__svg {
     transform: rotate(-90deg);
     transform-origin: center;
-    top: -14%;
+    top: -11%;
     width: 100%;
-    height: 100vw;
+    height: 112vw;
+  }
+
+  .why-dubai .sais-curved-panel__shape {
+    fill: #31b2b6;
+  }
+
+  .why-dubai .sais-curved-panel__accent {
+    stroke: transparent;
   }
 
   .why-dubai__title {
@@ -2712,7 +3165,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .why-dubai__image-wrap {
-    width: 80%;
+    width: calc(100% - 24px);
     margin: 0 auto;
     border-radius: 18px;
   }
@@ -2756,7 +3209,8 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .quick-links {
-    padding: clamp(46px, 5.6vw, 66px) 0 clamp(54px, 6.4vw, 74px)
+    margin-top: -24px;
+    padding: 76px 0 74px;
   }
 
   .quick-links__inner {
@@ -2774,12 +3228,12 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .quick-links-card {
-    min-height: 520px;
+    min-height: 540px;
   }
 
   .quick-links-card__copy {
     width: 100%;
-    min-height: 245px;
+    min-height: 250px;
     justify-content: flex-start;
     padding: 30px 24px 24px;
   }
@@ -2794,29 +3248,30 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .quick-links-card__wave {
-    top: 43%;
+    top: 71px;
     bottom: auto;
-    left: -1%;
-    width: 102%;
-    height: 84px;
-    stroke-width: 22px;
-    transform: rotate(90deg) scaleY(1.35);
+    left: 50%;
+    width: calc(10% + 60px);
+    height: 389px;
+    stroke-width: 18px;
+    transform: translateX(-50%) rotate(90deg) scaleY(1.08);
     transform-origin: center;
   }
 
   .quick-links-card__curve-mask {
-    top: 43%;
+    top: 71px;
     bottom: auto;
-    left: -1%;
-    width: 102%;
-    height: 84px;
-    transform: rotate(90deg) scaleY(1.35);
+    left: 50%;
+    width: calc(10% + 60px);
+    height: 389px;
+    transform: translateX(-50%) rotate(90deg) scaleY(1.08);
     transform-origin: center;
   }
 
   .quick-links-card__image-wrap {
     inset: auto 0 0 0;
-    height: 285px;
+    top: 248px;
+    height: auto;
     border-radius: 0 0 22px 22px;
   }
 
@@ -3052,13 +3507,13 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .social-feed__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 18px;
     margin-top: 30px;
   }
 
   .social-feed__image-wrap {
-    aspect-ratio: 160 / 205;
+    aspect-ratio: 340 / 250;
     border-radius: 20px;
     clip-path: inset(0 round 20px);
   }
@@ -3071,6 +3526,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   .site-footer__shape {
     width: 100%;
     height: 430px;
+    transform: rotate(90deg);
   }
 
   .site-footer__content {

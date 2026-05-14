@@ -4,6 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "SAIS Dubai | School Website",
   description: "Responsive SAIS Dubai homepage powered by Sanity CMS.",
+  icons: {
+    icon: "/sais-tab-icon.png",
+    shortcut: "/sais-tab-icon.png",
+    apple: "/sais-tab-icon.png",
+  },
 };
 
 export default function RootLayout({
